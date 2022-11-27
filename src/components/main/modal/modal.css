@@ -26,6 +26,11 @@
   z-index: 2;
 }
 
+.modal-character-body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .modal-character-name {
   margin: 0px;
 }

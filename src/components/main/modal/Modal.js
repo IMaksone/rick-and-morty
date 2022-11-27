@@ -121,7 +121,7 @@ export const Modal = () => {
         <div className="close-modal-button" onClick={clearModal}>
           Esc
         </div>
-        <div className="d-flex">
+        <div className="modal-character-body">
           <img
             alt="character_image"
             className="modal-character-img"

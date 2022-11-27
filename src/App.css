@@ -12,10 +12,6 @@
   color: #dedede;
 }
 
-.d-flex {
-  display: flex;
-}
-
 .text-ellipsis {
   overflow-x: hidden;
   white-space: nowrap;
