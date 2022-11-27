@@ -2,96 +2,136 @@ import { useMyContext } from "../../../context";
 
 import "./modal.css";
 
+const getCreatedDate = (modal) => {
+  const date = new Date(modal.created);
+
+  return `${date.getMonth()}/${date.getDay()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+};
+
+const characterDescFields = (modal) => [
+  {
+    title: modal.name,
+    body: (
+      <p
+        className={`character-text text-dark character-indicator ${
+          modal.status === "Alive"
+            ? "character-indicator-alive"
+            : "character-indicator-dead"
+        }`}
+      >
+        {modal.status.toLowerCase()}
+      </p>
+    ),
+  },
+  {
+    name: "Species",
+    text: modal.species,
+  },
+  {
+    name: "Gender",
+    text: modal.gender,
+  },
+  {
+    name: "Type",
+    text: modal.type || "unknown",
+  },
+  {
+    name: "Created",
+    text: getCreatedDate(modal),
+  },
+  {
+    name: "Location",
+    body: modal.location.url ? (
+      <a className="character-link text-dark" href={modal.location.url}>
+        {modal.location.name}
+      </a>
+    ) : (
+      <span className="character-text text-dark">{modal.location.name}</span>
+    ),
+  },
+  {
+    name: "Origin",
+    body: modal.origin.url ? (
+      <a className="character-link text-dark" href={modal.origin.url}>
+        {modal.origin.name}
+      </a>
+    ) : (
+      <span className="character-text text-dark">{modal.origin.name}</span>
+    ),
+  },
+];
+
 export const Modal = () => {
   const { modal, setModal } = useMyContext();
+  if (!modal) return "";
 
   const clearModal = () => {
     setModal(undefined);
   };
 
-  console.log(modal);
+  const characterDesc = (
+    <div className="modal-character-desc">
+      {characterDescFields(modal).map((el, i) => (
+        <div key={i}>
+          {el.title ? (
+            <h3 className="modal-character-name text-light">{el.title}</h3>
+          ) : (
+            ""
+          )}
+          {el.name ? (
+            <span className="character-text text-light margin-5">
+              {el.name}
+            </span>
+          ) : (
+            ""
+          )}
+          {el.body ? el.body : ""}
+          {el.text ? (
+            <span className="character-text text-dark">{el.text}</span>
+          ) : (
+            ""
+          )}
+        </div>
+      ))}
+    </div>
+  );
 
-  const getCreated = () => {
-    const date = new Date(modal.created);
+  const episodes = (
+    <div className="episodes-box">
+      <span className="character-text text-light">Episodes: </span>
+      <div className="episodes">
+        {modal.episode.length
+          ? modal.episode.map((el, i) => (
+              <a
+                key={i}
+                className="character-link text-dark text-ellipsis"
+                href={el}
+              >
+                {el}
+              </a>
+            ))
+          : modal.episode}
+      </div>
+    </div>
+  );
 
-    return `${date.getMonth()}/${date.getDay()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
-  };
-
-  return modal ? (
+  return (
     <div className="modal">
       <div className="modal-character">
         <div className="close-modal-button" onClick={clearModal}>
           Esc
         </div>
-        <img
-          alt="character_image"
-          className="modal-character-img"
-          src={modal.image}
-        />
-        <div className="modal-character-desc">
-          <div>
-            <h3 className="modal-character-name text-light">{modal.name}</h3>
-            <p
-              className={`character-text text-dark character-indicator ${
-                modal.status === "Alive"
-                  ? "character-indicator-alive"
-                  : "character-indicator-dead"
-              }`}
-            >
-              {modal.status.toLowerCase()}
-            </p>
-          </div>
-          <div>
-            <span className="character-text text-light margin-r-5">
-              Species:
-            </span>
-            <span className="character-text text-dark">{modal.species}</span>
-          </div>
-          <div>
-            <span className="character-text text-light margin-r-5">
-              Gender:
-            </span>
-            <span className="character-text text-dark">{modal.gender}</span>
-          </div>
-          <div>
-            <span className="character-text text-light margin-r-5">Type:</span>
-            <span className="character-text text-dark">
-              {modal.type || "unknown"}
-            </span>
-          </div>
-          <div>
-            <span className="character-text text-light margin-r-5">
-              Created:
-            </span>
-            <span className="character-text text-dark">{getCreated()}</span>
-          </div>
-          <div>
-            <span className="character-text text-light margin-r-5">
-              Location:
-            </span>
-            <a className="character-link text-dark" href={modal.location.url}>
-              {modal.location.name}
-            </a>
-          </div>
-          <div>
-            <span className="character-text text-light margin-r-5">
-              Origin:
-            </span>
-            {modal.origin.url ? (
-              <a className="character-link text-dark" href={modal.origin.url}>
-                {modal.origin.name}
-              </a>
-            ) : (
-              <span className="character-text text-dark">
-                {modal.origin.name}
-              </span>
-            )}
-          </div>
+        <div className="d-flex">
+          <img
+            alt="character_image"
+            className="modal-character-img"
+            src={modal.image}
+          />
+          {characterDesc}
         </div>
+        {episodes}
       </div>
       <div className="modal-back" onClick={clearModal}></div>
     </div>
-  ) : (
-    ""
   );
 };
