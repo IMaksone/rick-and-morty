@@ -1,3 +1,3 @@
 export * from './CharactersBox';
 export * from './FiltersBox';
-export * from './Modal';
+export * from './modal';
