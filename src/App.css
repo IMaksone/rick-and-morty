@@ -1,0 +1,77 @@
+.app {
+  position: relative;
+  height: 100vh;
+  background-color: #111111;
+}
+
+.text-dark {
+  color: #9a9a9a;
+}
+
+.text-light {
+  color: #dedede;
+}
+
+.character-name {
+  cursor: pointer;
+  margin: 0px;
+}
+
+.character-text {
+  display: inline-block;
+  font-size: 14px;
+  margin: 5px 0px;
+}
+
+.character-indicator {
+  position: relative;
+  padding-left: 17px;
+}
+
+.character-indicator::before {
+  content: " ";
+  position: absolute;
+  top: 5px;
+  left: 1px;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+}
+
+.character-indicator-alive::before {
+  background-color: #55cc44;
+}
+
+.character-indicator-dead::before {
+  background-color: #d63d2e;
+}
+
+.character-link{
+  text-decoration: none;
+}
+
+.character-link:hover{
+  color: #dedede;
+}
+
+.margin-r-5 {
+  margin: 5px
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1d1d1d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9a9a9a;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #868686;
+}

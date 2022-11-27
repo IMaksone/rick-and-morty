@@ -1,0 +1,43 @@
+.characters-box {
+  height: calc(100vh - 160px);
+  overflow: auto;
+}
+ 
+.characters-list {
+  position: relative;
+}
+
+.characters-list-el {
+  position: absolute;
+  width: calc(100% - 30px);
+  height: 150px;  
+  left: 0px;
+  padding: 0px 15px 15px 15px;
+}
+
+.character {
+  display: flex;
+  background-color: #1D1D1D;
+  border-radius: 5px;
+}
+
+.character-img {
+  cursor: pointer; 
+  width: 150px;
+  height: auto;
+  margin-right: 5px;  
+  border-radius: 5px 0px 0px 5px;
+}
+
+.character-desc {  
+  padding: 5px;
+}
+
+.character-name {
+  cursor: pointer;
+  margin: 0px;
+}
+
+.character-name:hover { 
+  color: #C38FFF;
+}
