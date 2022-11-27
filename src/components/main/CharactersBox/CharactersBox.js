@@ -9,13 +9,13 @@ import "./charactersBox.css";
 export const CharactersBox = () => {
   const { characters, filters } = useMyContext();
 
-  const listRef = useRef({ current: undefined });
+  const ref = useRef({ current: undefined });
 
   const [prepared, setPrepared] = useState([]);
   const [render, setRender] = useState([]);
 
   useEffect(() => {
-    setRender(renderPreparation(prepared, listRef.current));
+    setRender(renderPreparation(prepared, ref.current));
   }, [prepared]);
 
   useEffect(() => {
@@ -27,12 +27,8 @@ export const CharactersBox = () => {
   };
 
   return (
-    <div className="characters-box" onScroll={handleScroll}>
-      <CharactersList
-        listRef={listRef}
-        render={render}
-        length={prepared.length}
-      />
+    <div className="characters-box" ref={ref} onScroll={handleScroll}>
+      <CharactersList render={render} length={prepared.length} />
     </div>
   );
 };

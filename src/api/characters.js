@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { characterFields } from "../constatnts";
+import { characterFields } from "../constants";
 
 async function* fetchCharacters() {
   let url = "https://rickandmortyapi.com/api/character?page=1";

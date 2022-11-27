@@ -1,4 +1,4 @@
-import { filtersShema } from "../constatnts";
+import { filtersShema } from "../constants";
 
 export const filtersPrepare = (characters) => {
   const filters = {...filtersShema};

@@ -1,4 +1,4 @@
-import { charactersBoxParams } from "../constatnts";
+import { charactersBoxParams } from "../constants";
 
 const charactersIndex = (characters) => {
   return characters.map((ch, i) => ({ index: i, data: ch }));
@@ -61,6 +61,6 @@ export const renderPreparation = (data, element) => {
 
     end = start + count;
   }
-
+  
   return data.slice(start, end);
 };

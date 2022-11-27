@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TEST CharactersListEl 1`] = `
+<div
+  className="characters-list-el"
+  style={
+    Object {
+      "height": 150,
+      "top": 0,
+    }
+  }
+>
+  <div
+    className="character"
+  >
+    <img
+      alt="character_image"
+      className="character-img"
+      onClick={[Function]}
+      src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+    />
+    <div
+      className="character-desc"
+    >
+      <div>
+        <h3
+          className="character-name text-light"
+          onClick={[Function]}
+        >
+          Rick Sanchez
+        </h3>
+        <p
+          className="character-text text-dark character-indicator character-indicator-alive"
+        >
+          alive
+        </p>
+      </div>
+      <p
+        className="character-text text-dark"
+      >
+        Human
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TEST CharactersListEl 2`] = `
+<div
+  className="characters-list-el"
+  style={
+    Object {
+      "height": 150,
+      "top": 0,
+    }
+  }
+>
+  <div
+    className="character"
+  >
+    <img
+      alt="character_image"
+      className="character-img"
+      onClick={[Function]}
+      src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+    />
+    <div
+      className="character-desc"
+    >
+      <div>
+        <h3
+          className="character-name text-light"
+          onClick={[Function]}
+        >
+          Rick Sanchez
+        </h3>
+        <p
+          className="character-text text-dark character-indicator character-indicator-alive"
+        >
+          alive
+        </p>
+      </div>
+      <p
+        className="character-text text-dark"
+      >
+        Human
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TEST CharactersListEl 3`] = `
+<div
+  className="characters-list-el"
+  style={
+    Object {
+      "height": 150,
+      "top": 0,
+    }
+  }
+>
+  <div
+    className="character"
+  >
+    <img
+      alt="character_image"
+      className="character-img"
+      onClick={[Function]}
+      src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+    />
+    <div
+      className="character-desc"
+    >
+      <div>
+        <h3
+          className="character-name text-light"
+          onClick={[Function]}
+        >
+          Rick Sanchez
+        </h3>
+        <p
+          className="character-text text-dark character-indicator character-indicator-alive"
+        >
+          alive
+        </p>
+      </div>
+      <p
+        className="character-text text-dark"
+      >
+        Human
+      </p>
+    </div>
+  </div>
+</div>
+`;

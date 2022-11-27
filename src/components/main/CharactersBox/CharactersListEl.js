@@ -1,4 +1,4 @@
-import { charactersBoxParams } from "../../../constatnts";
+import { charactersBoxParams } from "../../../constants";
 import { useMyContext } from "../../../context";
 import { myCharacterType } from "../../../types";
 
