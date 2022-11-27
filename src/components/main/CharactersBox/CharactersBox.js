@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useMyContext } from "../../../context";
 
+import { useMyContext } from "../../../context";
 import { CharactersList } from "./CharactersList";
 import { charactersPrepare, renderPreparation } from "../../../scripts";
 
