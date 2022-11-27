@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types'
 
 import { useMyContext } from "../../../context";
 import { throttle } from "../../../scripts";
@@ -25,3 +26,7 @@ export const Input = ({ filterId }) => {
     </div>
   );
 };
+
+Input.propTypes = {
+  filterId: PropTypes.string.isRequired
+}

@@ -1,3 +1,3 @@
-export * from './characters';
-export * from './filters';
-export * from './modal'
+export * from './CharactersBox';
+export * from './FiltersBox';
+export * from './Modal'

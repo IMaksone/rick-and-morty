@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 import { Input } from "./Input";
 import { Checkbox } from "./Checkbox";
 
@@ -17,3 +19,12 @@ export const Filter = ({ filter, filterId }) => {
       );
   }
 };
+
+Filter.propTypes = {
+  filter: PropTypes.shape({
+    type: PropTypes.oneOf(['input', 'checkbox']).isRequired,
+    value: PropTypes.string,
+    values: PropTypes.object,
+  }),
+  filterId: PropTypes.string.isRequired
+}

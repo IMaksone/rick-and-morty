@@ -1,5 +1,6 @@
 import { charactersBoxParams } from "../../../constatnts";
 import { useMyContext } from "../../../context";
+import { myCharacterType } from "../../../types";
 
 export const CharactersListEl = ({ character }) => {
   const { setModal } = useMyContext();
@@ -43,4 +44,8 @@ export const CharactersListEl = ({ character }) => {
       </div>
     </div>
   );
+};
+
+CharactersListEl.propTypes = {
+  character: myCharacterType.isRequired,
 };

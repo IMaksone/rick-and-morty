@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 import { useMyContext } from "../../../context";
 
@@ -27,3 +28,8 @@ export const Checkbox = ({ filterId, checkboxId }) => {
     </div>
   );
 };
+
+Checkbox.propTypes = {
+  filterId: PropTypes.string.isRequired,
+  checkboxId: PropTypes.string.isRequired
+} 
