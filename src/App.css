@@ -12,6 +12,16 @@
   color: #dedede;
 }
 
+.d-flex {
+  display: flex;
+}
+
+.text-ellipsis {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .character-name {
   cursor: pointer;
   margin: 0px;
@@ -46,16 +56,16 @@
   background-color: #d63d2e;
 }
 
-.character-link{
+.character-link {
   text-decoration: none;
 }
 
-.character-link:hover{
+.character-link:hover {
   color: #dedede;
 }
 
-.margin-r-5 {
-  margin: 5px
+.margin-5 {
+  margin: 5px;
 }
 
 ::-webkit-scrollbar {

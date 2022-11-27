@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { filtersShema } from "./constatnts";
 
 const filtersPrepare = (characters) => {
-  const filters = filtersShema;
+  const filters = {...filtersShema};
 
   characters.forEach((el) => {
     Object.keys(filters).forEach((key) => {
@@ -18,7 +18,7 @@ const filtersPrepare = (characters) => {
       }
     });
   });
-
+  
   return filters;
 };
 
@@ -27,10 +27,9 @@ function App() {
 
   const [filters, setFilters] = useState({});
   const [modal, setModal] = useState(undefined);
-  const [isLoad, setIsLoad] = useState(false);
 
   useEffect(() => {
-    setFilters(filtersPrepare(characters));
+    if(characters.length) setFilters(filtersPrepare(characters));
   }, [characters]);
 
   return (
@@ -38,9 +37,7 @@ function App() {
       value={{
         characters,
         filters,
-        isLoad,
         modal,
-        setIsLoad,
         setModal,
         setFilters,
       }}

@@ -1,6 +1,8 @@
 import { Filter } from "./Filter";
 import { useMyContext } from "../../../context";
 
+import { Loader } from "../../common";
+
 import "./filtersBox.css";
 
 export const FiltersBox = () => {
@@ -14,7 +16,7 @@ export const FiltersBox = () => {
 
   return (
     <div className="filters-box">
-      <div className="filters-list">{list}</div>
+      <div className="filters-list">{filters.name ? list : <Loader />}</div>
     </div>
   );
 };

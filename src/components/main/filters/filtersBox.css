@@ -41,6 +41,10 @@
   background-color: #C38FFF;
 }
 
+.checkbox-checked:hover {
+  background-color: #664B86;
+}
+
 .checkbox-title {  
   color: #1D1D1D
 }
