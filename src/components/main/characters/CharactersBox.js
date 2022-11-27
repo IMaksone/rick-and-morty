@@ -11,10 +11,8 @@ export const CharactersBox = () => {
 
   const listRef = useRef({ current: undefined });
 
-  const [prepared, setPrepared] = useState(
-    charactersPrepare(characters, filters)
-  );
-  const [render, setRender] = useState(prepared);
+  const [prepared, setPrepared] = useState([]);
+  const [render, setRender] = useState([]);
 
   useEffect(() => {
     setRender(renderPreparation(prepared, listRef.current));

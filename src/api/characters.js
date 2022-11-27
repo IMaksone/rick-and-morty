@@ -31,5 +31,7 @@ export function useCharacters() {
     })();
   }, []);
 
+  
+
   return characters;
 }
