@@ -64,3 +64,9 @@ export const renderPreparation = (data, element) => {
   
   return data.slice(start, end);
 };
+
+export const getCreatedDate = (modal) => {
+  const date = new Date(modal.created);
+
+  return `${date.getMonth()}/${date.getDay()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+};
