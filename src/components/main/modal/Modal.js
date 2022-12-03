@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import { useMyContext } from "../../../context";
 import { characterFields } from "./characterFields";
 
