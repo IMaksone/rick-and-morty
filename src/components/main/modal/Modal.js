@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { useMyContext } from "../../../context";
 import { characterFields } from "./characterFields";
 
@@ -9,6 +11,10 @@ export const Modal = () => {
 
   const clearModal = () => {
     setModal(undefined);
+  };
+
+  const handleEscape = (e) => {
+    if (e.keyCode === 27) clearModal();
   };
 
   const characterDesc = (
@@ -58,7 +64,7 @@ export const Modal = () => {
   );
 
   return (
-    <div className="modal">
+    <div className="modal" tabIndex={0} onKeyDown={handleEscape}>
       <div className="modal-character">
         <div className="close-modal-button" onClick={clearModal}>
           Esc
