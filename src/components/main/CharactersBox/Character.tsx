@@ -1,8 +1,12 @@
-import { charactersBoxParams } from "../../../constants";
-import { useMyContext } from "../../../context";
-import { myCharacterType } from "../../../types";
+import { charactersBoxParams } from "src/constants";
+import { useMyContext } from "src/context";
+import { LocalCharacterType } from "src/types/character";
 
-export const CharactersListEl = ({ character }) => {
+interface CharacterInterface {
+  character: LocalCharacterType;
+}
+
+export const Character = ({ character }: CharacterInterface) => {
   const { setModal } = useMyContext();
 
   const addModal = () => {
@@ -11,10 +15,10 @@ export const CharactersListEl = ({ character }) => {
 
   return (
     <div
-      className="characters-list-el"
+      className="character-wr"
       style={{
         height: charactersBoxParams.elHeight,
-        top: character.index * charactersBoxParams.elFullHeight,
+        top: character.index * charactersBoxParams.elFullHeight
       }}
     >
       <div className="character">
@@ -44,8 +48,4 @@ export const CharactersListEl = ({ character }) => {
       </div>
     </div>
   );
-};
-
-CharactersListEl.propTypes = {
-  character: myCharacterType.isRequired,
 };
