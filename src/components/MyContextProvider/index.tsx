@@ -3,40 +3,65 @@ import { ReactNode, useEffect, useState } from "react";
 import { MyContext } from "src/context";
 import { useCharacters } from "src/api";
 import filterCircuitPrepare from "src/helper/filterCircuitPrepare";
-import { FilterCircuitType } from "src/constants";
+import { FilterCircuitType } from "src/constants/filtersShema";
 import { ApiCharacterType } from "src/types/character";
 
 interface MyContextProviderInterface {
-  children: ReactNode
+  children: ReactNode;
 }
 
 const MyContextProvider = ({ children }: MyContextProviderInterface) => {
   const characters = useCharacters();
 
-  const [filterCircuit, setFilterCircuit] = useState<FilterCircuitType>({});
-  const [modal, setModal] = useState<ApiCharacterType>(null);
+  const { characterForModal, setCharacterForModal, hideModal } =
+    useCharacterForModalMyContextProvider();
 
-  useEffect(() => {
-    if (characters.length) {
-      const filterCircuitPrepared = filterCircuitPrepare(characters)
-
-      setFilterCircuit(filterCircuitPrepared);
-    }
-  }, [characters]);
+  const { filterCircuit, setFilterCircuit } =
+    useFilterCircuitMyContextProvider();
 
   return (
     <MyContext.Provider
       value={{
         characters,
         filterCircuit,
-        modal,
-        setModal,
+        characterForModal,
+        setCharacterForModal,
+        hideModal,
         setFilterCircuit
       }}
     >
       {children}
     </MyContext.Provider>
   );
-}
+};
 
 export default MyContextProvider;
+
+const useCharacterForModalMyContextProvider = () => {
+  const [characterForModal, setCharacterForModal] =
+    useState<ApiCharacterType>(null);
+
+  const hideModal = () => setCharacterForModal(null);
+
+  return {
+    characterForModal,
+    setCharacterForModal,
+    hideModal
+  };
+};
+
+const useFilterCircuitMyContextProvider = () => {
+  const characters = useCharacters();
+
+  const [filterCircuit, setFilterCircuit] = useState<FilterCircuitType>();
+
+  useEffect(() => {
+    if (characters.length) {
+      const filterCircuitPrepared = filterCircuitPrepare(characters);
+
+      setFilterCircuit(filterCircuitPrepared);
+    }
+  }, [characters]);
+
+  return { filterCircuit, setFilterCircuit };
+};

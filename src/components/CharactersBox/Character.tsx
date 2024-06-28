@@ -14,10 +14,10 @@ const getIndicatorClassName = (characterStatus: CharacterStatusType) =>
 export const Character = ({ character }: CharacterInterface) => {
   const { index, data } = character;
 
-  const { setModal } = useMyContext();
+  const { setCharacterForModal } = useMyContext();
 
   const addModal = () => {
-    setModal(data);
+    setCharacterForModal(data);
   };
 
   const characterStatusClassName =

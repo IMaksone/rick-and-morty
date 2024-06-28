@@ -16,7 +16,7 @@ export type ApiCharacterType = {
     url: string;
   };
   image: string;
-  episode: string[];
+  episode: ApiCharacterEpisodeType;
   url: string;
   created: string;
 };
@@ -25,3 +25,5 @@ export type LocalCharacterType = {
   index: number;
   data: ApiCharacterType;
 };
+
+export type ApiCharacterEpisodeType = string[] | string

@@ -5,11 +5,11 @@ export type FilterKeyType = "name" | "type" | "status" | "species" | "gender";
 export type FilterType = {
   type: FilterTypesType;
   value?: string;
-  values?: Object;
+  valuesObject?: Object;
 };
 
 export type FilterCircuitType = {
-  [key in FilterKeyType]: FilterType;
+  [key in FilterKeyType]?: FilterType;
 };
 
 export const FILTER_CIRCUIT: FilterCircuitType = {
@@ -18,7 +18,7 @@ export const FILTER_CIRCUIT: FilterCircuitType = {
     value: ""
   },
   type: { type: "input", value: "" },
-  status: { type: "checkbox", values: {} },
-  species: { type: "checkbox", values: {} },
-  gender: { type: "checkbox", values: {} }
+  status: { type: "checkbox", valuesObject: {} },
+  species: { type: "checkbox", valuesObject: {} },
+  gender: { type: "checkbox", valuesObject: {} }
 };

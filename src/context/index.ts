@@ -6,16 +6,18 @@ import { FILTER_CIRCUIT, FilterCircuitType } from "src/constants/filtersShema";
 type MyContextPropsType = {
   characters: ApiCharacterType[];
   filterCircuit: FilterCircuitType;
-  modal: ApiCharacterType | null;
-  setModal: (character: ApiCharacterType) => void;
+  characterForModal: ApiCharacterType | null;
+  setCharacterForModal: (character: ApiCharacterType) => void;
+  hideModal: () => void;
   setFilterCircuit: (filterCircuit: FilterCircuitType) => void;
 };
 
 const myContextProps: MyContextPropsType = {
   characters: [],
   filterCircuit: FILTER_CIRCUIT,
-  modal: null,
-  setModal: () => {},
+  characterForModal: null,
+  setCharacterForModal: () => {},
+  hideModal: () => {},
   setFilterCircuit: () => {}
 };
 
