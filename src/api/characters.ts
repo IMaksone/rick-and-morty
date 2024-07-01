@@ -41,11 +41,16 @@ export function useCharacters() {
         characters[0][key] === undefined
     )
   ) {
-    console.error(
-      "ERROR: received unexpected data from https://rickandmortyapi.com/"
-    );
+    apiError()
+    
     return [];
   }
 
   return characters;
 }
+
+const apiError = () => {
+  console.error(
+    "ERROR: received unexpected data from https://rickandmortyapi.com/"
+  );
+};

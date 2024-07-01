@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 
 import { MyContext } from "src/context";
-import { useCharacters } from "src/api";
+import { useCharacters } from "src/api/characters";
 import filterCircuitPrepare from "src/helper/filterCircuitPrepare";
 import { FILTER_CIRCUIT, FilterCircuitType } from "src/constants/filtersShema";
 import { ApiCharacterType } from "src/types/character";

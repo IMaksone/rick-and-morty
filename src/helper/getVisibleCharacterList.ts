@@ -23,8 +23,6 @@ export const getVisibleCharacterList = (
     endIndex = startIndex + countElements;
   }
 
-  console.log(startIndex, endIndex)
-
   return localChracterList.slice(startIndex, endIndex);
 };
 
