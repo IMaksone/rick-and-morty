@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 
-import { characterFields } from "../constants/charactersFields";
-
 async function* fetchCharacters() {
   let url = "https://rickandmortyapi.com/api/character?page=1";
 
@@ -41,8 +39,8 @@ export function useCharacters() {
         characters[0][key] === undefined
     )
   ) {
-    apiError()
-    
+    apiError();
+
     return [];
   }
 
@@ -54,3 +52,18 @@ const apiError = () => {
     "ERROR: received unexpected data from https://rickandmortyapi.com/"
   );
 };
+
+export const characterFields = [
+  "name",
+  "status",
+  "species",
+  "gender",
+  "type",
+  "created",
+  "location",
+  "origin",
+  "episode",
+  "url",
+  "id",
+  "image"
+];
