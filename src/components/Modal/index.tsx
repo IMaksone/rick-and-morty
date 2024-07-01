@@ -1,4 +1,3 @@
-import { useMyContext } from "src/context/useMyContext";
 import useModalCharacterFieldList, {
   ModalCharacterFieldType
 } from "./useModalCharacterFieldList";

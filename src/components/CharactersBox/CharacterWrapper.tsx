@@ -1,8 +1,6 @@
 import { ReactNode } from "react";
 import CHARACTER_VIRTUAL_LIST_PARAMS from "src/constants/characterVirtualListParams";
 
-import { LocalCharacterType } from "src/types/character";
-
 interface CharacterWrapperInterface {
   characterIndex: number
   children: ReactNode;
