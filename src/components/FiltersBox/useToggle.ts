@@ -15,14 +15,14 @@ export const useFilterCheckbox: UseFilterCheckboxType = (
   const { filterCircuit, setFilterCircuit } = useMyContext();
 
   const [isChecked, setIsChecked] = useState(
-    filterCircuit[filterKey].values[checkboxKey]
+    filterCircuit[filterKey].valuesObject[checkboxKey]
   );
 
   const handleClick = () => {
     setIsChecked(!isChecked);
 
     const newFilters = { ...filterCircuit };
-    newFilters[filterKey].values[checkboxKey] = !isChecked;
+    newFilters[filterKey].valuesObject[checkboxKey] = !isChecked;
 
     setFilterCircuit(newFilters);
   };

@@ -7,7 +7,8 @@ export const getFilteredLocalCharacterList = (
 ) => {
   const activeFilterCircuit = getActiveFilterCircuit(filterCircuit);
 
-  let filtered: ApiCharacterType[] = [];
+  let filtered: ApiCharacterType[] = apiCharacterList;
+
 
   if (getIsNeedFiltering(activeFilterCircuit)) {
     filtered = apiCharacterFiltering(apiCharacterList, activeFilterCircuit);
@@ -16,7 +17,7 @@ export const getFilteredLocalCharacterList = (
   return createLocalCharacterList(filtered);
 };
 
-export default getFilteredLocalCharacterList
+export default getFilteredLocalCharacterList;
 
 const apiCharacterFiltering = (
   apiCharacterList: ApiCharacterType[],
@@ -91,9 +92,14 @@ const getActiveFilterCircuit = (filterCircuit: FilterCircuitType) => {
 };
 
 const getIsFilterActive = (filter: FilterType) => {
-  const valuesKeys = Object.keys(filter.valuesObject);
+  if (filter.valuesObject) {
+    const valuesKeys = Object.keys(filter.valuesObject);
 
-  return filter.valuesObject && valuesKeys.find((k) => filter.valuesObject[k]);
+    return (
+      filter.valuesObject && valuesKeys.find((k) => filter.valuesObject[k])
+    );
+  }
+  return false;
 };
 
 const getIsNeedFiltering = (activeFilterCircuit: FilterCircuitType) => {

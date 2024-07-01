@@ -3,11 +3,11 @@
   overflow: auto;
 }
  
-.characters-list {
+.character-list {
   position: relative;
 }
 
-.characters-list-el {
+.character-wr {
   position: absolute;
   width: calc(100% - 30px);
   height: 150px;  

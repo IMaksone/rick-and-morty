@@ -1,27 +1,31 @@
-export const throttle = (func, ms = 50) => {
-  let isThrottled = false,
-    savedArgs,
-    savedThis;
+const defaultDelay = 50;
 
-  function wrapper() {
+export const getThrottledFunction = (callback: Function, delayMs = defaultDelay) => {
+  let isThrottled = false,
+    savedArgs: any,
+    savedThis: any;
+
+  function wrapper(...args: any) {
     if (isThrottled) {
       savedArgs = arguments;
       savedThis = this;
       return;
     }
 
-    func.apply(this, arguments);
+    callback.apply(this, arguments);
 
     isThrottled = true;
 
     setTimeout(function () {
       isThrottled = false;
+
       if (savedArgs) {
         wrapper.apply(savedThis, savedArgs);
         savedArgs = savedThis = null;
       }
-    }, ms);
+    }, delayMs);
   }
 
   return wrapper;
 };
+

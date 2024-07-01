@@ -10,7 +10,7 @@ export const ToggleListWrapper = ({
   filter,
   filterKey
 }: ToggleListWrapperInterface) => {
-  const filterKeyList = Object.keys(filter.values);
+  const filterKeyList = Object.keys(filter.valuesObject);
 
   const renderCheckboxes = filterKeyList.map((key, i) => (
     // key ???

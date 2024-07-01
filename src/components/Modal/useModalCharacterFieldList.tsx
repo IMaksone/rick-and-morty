@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import useMyContext from "src/context/useMyContext";
-import { getCreatedDate } from "src/helper";
+import { getCreatedDate } from "src/helper/characters";
 import { CharacterStatusType } from "src/types/character";
 
 type GetModalCharacterFieldListType = () => ModalCharacterFieldType[];

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { useMyContext } from "src/context/useMyContext";
 import getFilteredLocalCharacterList from "src/helper/getFilteredLocalCharacterList";
-import { getVisibleCharacters } from "src/helper/characters";
+import getVisibleCharacterList from "src/helper/getVisibleCharacterList";
 import { LocalCharacterType } from "src/types/character";
 
 import "./charactersBox.css";
@@ -23,7 +23,7 @@ export const useCharactersBox: UseCharactersBoxType = () => {
   const [visibleCharacters, setVisibleCharacters] = useState([]);
 
   useEffect(() => {
-    const visible = getVisibleCharacters(filteredCharacters, ref.current);
+    const visible = getVisibleCharacterList(filteredCharacters, ref.current);
 
     setVisibleCharacters(visible);
   }, [filteredCharacters]);
@@ -35,7 +35,7 @@ export const useCharactersBox: UseCharactersBoxType = () => {
   }, [characters, filterCircuit]);
 
   const handleScroll: React.UIEventHandler<HTMLDivElement> = (event) => {
-    const visible = getVisibleCharacters(filteredCharacters, event.target);
+    const visible = getVisibleCharacterList(filteredCharacters, event.target);
 
     setVisibleCharacters(visible);
   };

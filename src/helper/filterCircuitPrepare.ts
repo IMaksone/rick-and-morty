@@ -8,8 +8,8 @@ export const filterCircuitPrepare: FiltersPrepareType = (characters) => {
 
   characters.forEach((character) => {
     Object.keys(filters).forEach((filterKey: FilterKeyType) => {
-      if (filters[filterKey].values) {
-        filters[filterKey].values[character[filterKey]] = false;
+      if (filters[filterKey].valuesObject) {
+        filters[filterKey].valuesObject[character[filterKey]] = false;
       }
     });
   });

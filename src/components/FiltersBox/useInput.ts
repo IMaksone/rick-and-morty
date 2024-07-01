@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { FilterKeyType } from "src/constants/filtersShema";
 import { useMyContext } from "src/context/useMyContext";
-import { throttle } from "src/helper";
+import { getThrottledFunction } from "src/helper/throttle";
 
 type UseInputType = (filterKey: FilterKeyType) => {
   value: string;
@@ -11,7 +11,7 @@ type UseInputType = (filterKey: FilterKeyType) => {
 
 export const useInput: UseInputType = (filterKey) => {
   const { filterCircuit, setFilterCircuit } = useMyContext();
-  const throttled = throttle(setFilterCircuit);
+  const throttled = getThrottledFunction(setFilterCircuit);
 
   const [value, setValue] = useState(filterCircuit[filterKey].value);
 

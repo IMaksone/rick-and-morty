@@ -16,3 +16,5 @@ export const CharactersBox = () => {
     </div>
   );
 };
+
+export default CharactersBox;

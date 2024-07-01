@@ -3,7 +3,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { MyContext } from "src/context";
 import { useCharacters } from "src/api";
 import filterCircuitPrepare from "src/helper/filterCircuitPrepare";
-import { FilterCircuitType } from "src/constants/filtersShema";
+import { FILTER_CIRCUIT, FilterCircuitType } from "src/constants/filtersShema";
 import { ApiCharacterType } from "src/types/character";
 
 interface MyContextProviderInterface {
@@ -53,7 +53,7 @@ const useCharacterForModalMyContextProvider = () => {
 const useFilterCircuitMyContextProvider = () => {
   const characters = useCharacters();
 
-  const [filterCircuit, setFilterCircuit] = useState<FilterCircuitType>();
+  const [filterCircuit, setFilterCircuit] = useState<FilterCircuitType>(FILTER_CIRCUIT);
 
   useEffect(() => {
     if (characters.length) {

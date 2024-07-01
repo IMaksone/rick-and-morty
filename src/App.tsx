@@ -1,15 +1,10 @@
-import { CharactersBox, FiltersBox, Loader, Modal } from "./components";
+import CharactersBox from "./components/CharactersBox";
+import FiltersBox from "./components/FiltersBox";
+import Loader from "./components/Loader";
+import Modal from "./components/Modal";
 import { useMyContext } from "./context/useMyContext";
 
 import "./App.css";
-
-const AppContent = () => (
-  <>
-    <FiltersBox />
-    <CharactersBox />
-    <Modal />
-  </>
-);
 
 function App() {
   const { characters } = useMyContext();
@@ -24,3 +19,11 @@ function App() {
 }
 
 export default App;
+
+const AppContent = () => (
+  <>
+    <FiltersBox />
+    <CharactersBox />
+    <Modal />
+  </>
+);
