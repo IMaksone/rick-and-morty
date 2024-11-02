@@ -1,8 +1,8 @@
 import { ESC_KEY } from "src/constants/keyboardKeys";
-import useMyContext from "src/context/useMyContext";
+import { useModalContext } from "src/context/ModalContext";
 
 export const useModal = () => {
-  const { characterForModal, hideModal } = useMyContext();
+  const { characterForModal, hideModal } = useModalContext();
 
   const handleEscape: React.KeyboardEventHandler<HTMLDivElement> = (event) => {
     if (event.key === ESC_KEY) hideModal();

@@ -1,6 +1,6 @@
-import useMyContext from "src/context/useMyContext";
 import { CharacterStatusType, LocalCharacterType } from "src/types/character";
 import CharacterWrapper from "./CharacterWrapper";
+import { useModalContext } from "src/context/ModalContext";
 
 interface CharacterInterface {
   character: LocalCharacterType;
@@ -14,7 +14,7 @@ const getIndicatorClassName = (characterStatus: CharacterStatusType) =>
 export const Character = ({ character }: CharacterInterface) => {
   const { index, data } = character;
 
-  const { setCharacterForModal } = useMyContext();
+  const { setCharacterForModal } = useModalContext();
 
   const addModal = () => {
     setCharacterForModal(data);

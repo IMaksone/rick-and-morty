@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-import { useMyContext } from "src/context/useMyContext";
 import getFilteredLocalCharacterList from "src/helper/getFilteredLocalCharacterList";
 import getVisibleCharacterList from "src/helper/getVisibleCharacterList";
 import { LocalCharacterType } from "src/types/character";
 
 import "./charactersBox.css";
+import { useCharactersContext } from "src/context/CharactersContext";
+import { useFilterContext } from "src/context/FilterContext";
 
 type UseCharactersBoxType = () => {
   ref: React.MutableRefObject<undefined>;
@@ -15,7 +16,8 @@ type UseCharactersBoxType = () => {
 };
 
 export const useCharactersBox: UseCharactersBoxType = () => {
-  const { characters, filterCircuit } = useMyContext();
+  const { characters } = useCharactersContext();
+  const { filterCircuit } = useFilterContext();
 
   const ref = useRef();
 
@@ -44,7 +46,7 @@ export const useCharactersBox: UseCharactersBoxType = () => {
     ref,
     visibleCharacters,
     filteredCharactersLength: filteredCharacters.length,
-    handleScroll
+    handleScroll,
   };
 };
 

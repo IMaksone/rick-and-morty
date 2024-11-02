@@ -2,12 +2,12 @@ import CharactersBox from "./components/CharactersBox";
 import FiltersBox from "./components/FiltersBox";
 import Loader from "./components/Loader";
 import Modal from "./components/Modal";
-import { useMyContext } from "./context/useMyContext";
+import { useCharactersContext } from "./context/CharactersContext";
 
-import "./App.css";
+import './styles/app.css'
 
 function App() {
-  const { characters } = useMyContext();
+  const { characters } = useCharactersContext();
 
   return (
     <div className="app">

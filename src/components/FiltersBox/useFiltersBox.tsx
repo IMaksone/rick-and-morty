@@ -1,15 +1,15 @@
 import { ReactNode } from "react";
 
 import Filter from "./Filter";
-import useMyContext from "src/context/useMyContext";
 import { FilterKeyType } from "src/constants/filtersShema";
 
 import "./filtersBox.css";
+import { useFilterContext } from "src/context/FilterContext";
 
 type UseFiltersBoxType = () => ReactNode;
 
 export const useFiltersBox: UseFiltersBoxType = () => {
-  const { filterCircuit } = useMyContext();
+  const { filterCircuit } = useFilterContext();
 
   const filterCircuitKeys = Object.keys(filterCircuit);
 

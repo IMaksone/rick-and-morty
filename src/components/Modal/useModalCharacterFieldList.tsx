@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import useMyContext from "src/context/useMyContext";
+import { useModalContext } from "src/context/ModalContext";
 import { getCreatedDate } from "src/helper/characters";
 import { CharacterStatusType } from "src/types/character";
 
@@ -14,7 +14,7 @@ export type ModalCharacterFieldType = {
 
 export const useModalCharacterFieldList: GetModalCharacterFieldListType =
   () => {
-    const { characterForModal } = useMyContext();
+    const { characterForModal } = useModalContext();
 
     const { name, status, species, gender, type, created, location, origin } =
       characterForModal;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { FilterKeyType } from "src/constants/filtersShema";
-import { useMyContext } from "src/context/useMyContext";
+import { useFilterContext } from "src/context/FilterContext";
 
 type UseFilterCheckboxType = (
   filterKey: FilterKeyType,
@@ -12,7 +12,7 @@ export const useFilterCheckbox: UseFilterCheckboxType = (
   filterKey,
   checkboxKey
 ) => {
-  const { filterCircuit, setFilterCircuit } = useMyContext();
+  const { filterCircuit, setFilterCircuit } = useFilterContext();
 
   const [isChecked, setIsChecked] = useState(
     filterCircuit[filterKey].valuesObject[checkboxKey]
