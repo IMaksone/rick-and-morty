@@ -1,6 +1,9 @@
 const defaultDelay = 50;
 
-export const getThrottledFunction = (callback: Function, delayMs = defaultDelay) => {
+export default function getThrottledFunction(
+  callback: Function,
+  delayMs = defaultDelay
+) {
   let isThrottled = false,
     savedArgs: any,
     savedThis: any;
@@ -27,5 +30,4 @@ export const getThrottledFunction = (callback: Function, delayMs = defaultDelay)
   }
 
   return wrapper;
-};
-
+}

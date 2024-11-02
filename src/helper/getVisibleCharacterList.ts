@@ -3,10 +3,10 @@ import { CHARACTER_VIRTUAL_LIST_PARAMS } from "../constants/characterVirtualList
 
 const numberOfAdditionalVisibleElements = 3;
 
-export const getVisibleCharacterList = (
+export default function getVisibleCharacterList(
   localChracterList: LocalCharacterType[],
   htmlWrapper: any //HTMLDivElement | EventTarget
-) => {
+) {
   let startIndex = 0;
   let endIndex = getNumberOfVisibleElements(window.innerHeight) + 1;
 
@@ -24,9 +24,7 @@ export const getVisibleCharacterList = (
   }
 
   return localChracterList.slice(startIndex, endIndex);
-};
-
-export default getVisibleCharacterList;
+}
 
 const getNumberOfVisibleElements = (fullHeight: number) =>
   Math.ceil(fullHeight / CHARACTER_VIRTUAL_LIST_PARAMS.elFullHeight) +

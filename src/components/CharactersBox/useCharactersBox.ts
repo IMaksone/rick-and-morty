@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import getFilteredLocalCharacterList from "src/helper/getFilteredLocalCharacterList";
+import getFilteredLocalCharacterList from "src/helper/filterLocalCharcterList";
 import getVisibleCharacterList from "src/helper/getVisibleCharacterList";
 import { LocalCharacterType } from "src/types/character";
 

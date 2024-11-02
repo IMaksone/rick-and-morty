@@ -1,9 +1,13 @@
-import { FILTER_CIRCUIT, FilterCircuitType, FilterKeyType } from "src/constants/filtersShema";
+import {
+  FILTER_CIRCUIT,
+  FilterCircuitType,
+  FilterKeyType,
+} from "src/constants/filtersShema";
 import { ApiCharacterType } from "src/types/character";
 
-type FiltersPrepareType = (characters: ApiCharacterType[]) => FilterCircuitType;
+type FiltersPrepare = (characters: ApiCharacterType[]) => FilterCircuitType;
 
-export const filterCircuitPrepare: FiltersPrepareType = (characters) => {
+const filterCircuitPrepare: FiltersPrepare = (characters) => {
   const filters = FILTER_CIRCUIT;
 
   characters.forEach((character) => {

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { FilterKeyType } from "src/constants/filtersShema";
 import { useFilterContext } from "src/context/FilterContext";
-import { getThrottledFunction } from "src/helper/throttle";
+import getThrottledFunction from "src/helper/getThrottledFunction";
 
 type UseInputType = (filterKey: FilterKeyType) => {
   value: string;
@@ -16,7 +16,7 @@ export const useInput: UseInputType = (filterKey) => {
   const [value, setValue] = useState(filterCircuit[filterKey].value);
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    const targetValue = event.target.value
+    const targetValue = event.target.value;
 
     setValue(targetValue);
 
@@ -28,7 +28,7 @@ export const useInput: UseInputType = (filterKey) => {
 
   return {
     value,
-    handleChange
+    handleChange,
   };
 };
 
