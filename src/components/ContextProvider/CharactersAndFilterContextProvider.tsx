@@ -7,7 +7,7 @@ import { ContextProviderProps } from "./types";
 import CharactersContext, {
   useCharactersContext,
 } from "src/context/CharactersContext";
-import { useCharacters } from "src/api/characters";
+import useApiCharacters from "src/api/hooks/useApiCharacters";
 
 export default function CharactersAndFilterContextProvider({
   children,
@@ -35,7 +35,7 @@ function FilterContextProvider({ children }: ContextProviderProps) {
 }
 
 function CharactersContextProvider({ children }: ContextProviderProps) {
-  const characters = useCharacters();
+  const characters = useApiCharacters();
 
   return (
     <CharactersContext.Provider
