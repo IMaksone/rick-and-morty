@@ -1,10 +1,10 @@
-import { LocalCharacterType } from "src/types/character";
+import { LocalCharacter } from "src/types/character";
 import { CHARACTER_VIRTUAL_LIST_PARAMS } from "../constants/characterVirtualListParams";
 
 const numberOfAdditionalVisibleElements = 3;
 
 export default function getVisibleCharacterList(
-  localChracterList: LocalCharacterType[],
+  localChracterList: LocalCharacter[],
   htmlWrapper: any //HTMLDivElement | EventTarget
 ) {
   let startIndex = 0;

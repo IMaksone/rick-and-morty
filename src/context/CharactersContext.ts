@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
 
-import { ApiCharacterType } from "src/types/character";
+import { ApiCharacter } from "src/types/character";
 
 type ContextProps = {
-  characters: ApiCharacterType[];
+  characters: ApiCharacter[];
 };
 
 const contextProps: ContextProps = {

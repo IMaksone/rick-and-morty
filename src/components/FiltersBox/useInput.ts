@@ -4,12 +4,12 @@ import { FilterKeyType } from "src/constants/filtersShema";
 import { useFilterContext } from "src/context/FilterContext";
 import getThrottledFunction from "src/helper/getThrottledFunction";
 
-type UseInputType = (filterKey: FilterKeyType) => {
+type UseInputReturned = {
   value: string;
   handleChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-export const useInput: UseInputType = (filterKey) => {
+export default function useInput(filterKey: FilterKeyType): UseInputReturned {
   const { filterCircuit, setFilterCircuit } = useFilterContext();
   const throttled = getThrottledFunction(setFilterCircuit);
 
@@ -30,6 +30,4 @@ export const useInput: UseInputType = (filterKey) => {
     value,
     handleChange,
   };
-};
-
-export default useInput;
+}

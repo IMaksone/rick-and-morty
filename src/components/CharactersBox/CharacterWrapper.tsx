@@ -1,24 +1,23 @@
 import { ReactNode } from "react";
 import CHARACTER_VIRTUAL_LIST_PARAMS from "src/constants/characterVirtualListParams";
 
-interface CharacterWrapperInterface {
-  characterIndex: number
+interface CharacterWrapperProps {
+  characterIndex: number;
   children: ReactNode;
 }
 
-export const CharacterWrapper = ({
+export default function CharacterWrapper({
   characterIndex,
-  children
-}: CharacterWrapperInterface) => (
-  <div
-    className="character-wr"
-    style={{
-      height: CHARACTER_VIRTUAL_LIST_PARAMS.elHeight,
-      top: characterIndex * CHARACTER_VIRTUAL_LIST_PARAMS.elFullHeight
-    }}
-  >
-    {children}
-  </div>
-);
+  children,
+}: CharacterWrapperProps) {
+  const styles = {
+    height: CHARACTER_VIRTUAL_LIST_PARAMS.elHeight,
+    top: characterIndex * CHARACTER_VIRTUAL_LIST_PARAMS.elFullHeight,
+  };
 
-export default CharacterWrapper;
+  return (
+    <div className="character-wr" style={styles}>
+      {children}
+    </div>
+  );
+}

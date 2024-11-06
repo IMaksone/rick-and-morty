@@ -1,20 +1,19 @@
 import { FilterType, FilterKeyType } from "src/constants/filtersShema";
 import Toggle from "./Toggle";
 
-interface ToggleListWrapperInterface {
+interface ToggleListWrapperProps {
   filter: FilterType;
   filterKey: FilterKeyType;
 }
 
-export const ToggleListWrapper = ({
+export default function ToggleListWrapper({
   filter,
-  filterKey
-}: ToggleListWrapperInterface) => {
+  filterKey,
+}: ToggleListWrapperProps) {
   const filterKeyList = Object.keys(filter.valuesObject);
 
-  const renderCheckboxes = filterKeyList.map((key, i) => (
-    // key ???
-    <Toggle key={i} filterKey={filterKey} toggleKey={key} />
+  const renderCheckboxes = filterKeyList.map((key) => (
+    <Toggle key={key} filterKey={filterKey} toggleKey={key} />
   ));
 
   return (
@@ -23,6 +22,4 @@ export const ToggleListWrapper = ({
       {renderCheckboxes}
     </div>
   );
-};
-
-export default ToggleListWrapper;
+}

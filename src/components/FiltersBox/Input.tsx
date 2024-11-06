@@ -1,11 +1,11 @@
 import { FilterKeyType } from "src/constants/filtersShema";
 import useInput from "./useInput";
 
-interface InputInterface {
+interface InputProps {
   filterKey: FilterKeyType;
 }
 
-export const Input = ({ filterKey }: InputInterface) => {
+export default function Input({ filterKey }: InputProps) {
   const { value, handleChange } = useInput(filterKey);
 
   return (
@@ -14,6 +14,4 @@ export const Input = ({ filterKey }: InputInterface) => {
       <input className="input" value={value} onChange={handleChange} />
     </div>
   );
-};
-
-export default Input;
+}

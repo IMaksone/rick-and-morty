@@ -1,21 +1,20 @@
 import { FilterKeyType } from "src/constants/filtersShema";
 import useToggle from "./useToggle";
 
-interface ToggleInterfae {
+interface ToggleProps {
   filterKey: FilterKeyType;
   toggleKey: string;
 }
 
-export const Toggle = ({ filterKey, toggleKey }: ToggleInterfae) => {
+export default function Toggle({ filterKey, toggleKey }: ToggleProps) {
   const { isChecked, handleClick } = useToggle(filterKey, toggleKey);
 
   const checkedClassName = isChecked ? "toggle-checked" : "";
+  const className = "toggle " + checkedClassName;
 
   return (
-    <div className={"toggle " + checkedClassName} onClick={handleClick}>
+    <div className={className} onClick={handleClick}>
       <span className="toggle-title">{toggleKey}</span>
     </div>
   );
-};
-
-export default Toggle;
+}

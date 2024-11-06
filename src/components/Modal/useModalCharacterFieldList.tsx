@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { useModalContext } from "src/context/ModalContext";
 import { getCreatedDate } from "src/helper/characters";
-import { CharacterStatusType } from "src/types/character";
+import { CharacterStatus } from "src/types/character";
 
 type GetModalCharacterFieldListType = () => ModalCharacterFieldType[];
 
@@ -34,7 +34,7 @@ export default useModalCharacterFieldList;
 
 const getName = (
   characterName: string,
-  characterStatus: CharacterStatusType
+  characterStatus: CharacterStatus
 ) => {
   const statusClassName =
     characterStatus === "Alive"

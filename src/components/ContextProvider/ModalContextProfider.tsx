@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { ApiCharacterType } from "src/types/character";
+import { ApiCharacter } from "src/types/character";
 import ModalContext from "src/context/ModalContext";
 import { ContextProviderProps } from "./types";
 
@@ -25,7 +25,7 @@ export default function ModalContextProvider({
 
 const useCharacterForModal = () => {
   const [characterForModal, setCharacterForModal] =
-    useState<ApiCharacterType>(null);
+    useState<ApiCharacter>(null);
 
   const hideModal = () => setCharacterForModal(null);
 

@@ -3,15 +3,15 @@ import { useState } from "react";
 import { FilterKeyType } from "src/constants/filtersShema";
 import { useFilterContext } from "src/context/FilterContext";
 
-type UseFilterCheckboxType = (
+type UseFilterCheckboxReturned = {
+  isChecked: boolean;
+  handleClick: () => void;
+};
+
+export default function useFilterCheckbox(
   filterKey: FilterKeyType,
   checkboxKey: string
-) => { isChecked: boolean; handleClick: () => void };
-
-export const useFilterCheckbox: UseFilterCheckboxType = (
-  filterKey,
-  checkboxKey
-) => {
+): UseFilterCheckboxReturned {
   const { filterCircuit, setFilterCircuit } = useFilterContext();
 
   const [isChecked, setIsChecked] = useState(
@@ -28,6 +28,4 @@ export const useFilterCheckbox: UseFilterCheckboxType = (
   };
 
   return { isChecked, handleClick };
-};
-
-export default useFilterCheckbox;
+}

@@ -1,10 +1,10 @@
 import { createContext, useContext } from "react";
 
-import { ApiCharacterType } from "src/types/character";
+import { ApiCharacter } from "src/types/character";
 
 type ContextProps = {
-  characterForModal: ApiCharacterType | null;
-  setCharacterForModal: (character: ApiCharacterType) => void;
+  characterForModal: ApiCharacter | null;
+  setCharacterForModal: (character: ApiCharacter) => void;
   hideModal: () => void;
 };
 

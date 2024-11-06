@@ -1,16 +1,15 @@
-import { FilterCircuitType, FilterType } from "src/constants/filtersShema";
-import { ApiCharacterType } from "src/types/character";
+import { FilterCircuitType } from "src/constants/filtersShema";
+import { ApiCharacter } from "src/types/character";
 import filterApiCharacterList from "./filterApiCharacterList";
 import getActiveFilterCircuit from "./getActiveFilterCircuit";
 
 const FilteredLocalCharacterList = (
-  apiCharacterList: ApiCharacterType[],
+  apiCharacterList: ApiCharacter[],
   filterCircuit: FilterCircuitType
 ) => {
   const activeFilterCircuit = getActiveFilterCircuit(filterCircuit);
 
-  let filtered: ApiCharacterType[] = apiCharacterList;
-
+  let filtered: ApiCharacter[] = apiCharacterList;
 
   if (isNeedFiltering(activeFilterCircuit)) {
     filtered = filterApiCharacterList(apiCharacterList, activeFilterCircuit);
@@ -21,16 +20,15 @@ const FilteredLocalCharacterList = (
 
 export default FilteredLocalCharacterList;
 
-
 const isNeedFiltering = (activeFilterCircuit: FilterCircuitType) => {
   const activeFilterCircuitKeys = Object.keys(activeFilterCircuit);
 
   return !!activeFilterCircuitKeys.length;
 };
 
-const createLocalCharacterList = (apiCharacterList: ApiCharacterType[]) => {
+const createLocalCharacterList = (apiCharacterList: ApiCharacter[]) => {
   return apiCharacterList.map((character, index) => ({
     index: index,
-    data: character
+    data: character,
   }));
 };

@@ -1,9 +1,9 @@
-export type CharacterStatusType = "Alive" | "Dead"
+export type CharacterStatus = "Alive" | "Dead";
 
-export type ApiCharacterType = {
+export type ApiCharacter = {
   id: number;
   name: string;
-  status: CharacterStatusType;
+  status: CharacterStatus;
   species: string;
   type: string;
   gender: string;
@@ -16,14 +16,14 @@ export type ApiCharacterType = {
     url: string;
   };
   image: string;
-  episode: ApiCharacterEpisodeType;
+  episode: ApiCharacterEpisode;
   url: string;
   created: string;
 };
 
-export type LocalCharacterType = {
+export type LocalCharacter = {
   index: number;
-  data: ApiCharacterType;
+  data: ApiCharacter;
 };
 
-export type ApiCharacterEpisodeType = string[] | string
+export type ApiCharacterEpisode = string[] | string;

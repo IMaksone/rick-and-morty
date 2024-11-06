@@ -1,9 +1,9 @@
-import { CharacterList } from "./CharacterList";
+import CharacterList from "./CharacterList";
 import useCharactersBox from "./useCharactersBox";
 
 import "./charactersBox.css";
 
-export const CharactersBox = () => {
+export default function CharactersBox() {
   const { ref, visibleCharacters, filteredCharactersLength, handleScroll } =
     useCharactersBox();
 
@@ -15,6 +15,4 @@ export const CharactersBox = () => {
       />
     </div>
   );
-};
-
-export default CharactersBox;
+}

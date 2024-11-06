@@ -2,7 +2,7 @@ import useFiltersBox from "./useFiltersBox";
 
 import "./filtersBox.css";
 
-export const FiltersBox = () => {
+export default function FiltersBox() {
   const renderFilterList = useFiltersBox();
 
   return (
@@ -10,6 +10,4 @@ export const FiltersBox = () => {
       <div className="filter-list">{renderFilterList}</div>
     </div>
   );
-};
-
-export default FiltersBox;
+}

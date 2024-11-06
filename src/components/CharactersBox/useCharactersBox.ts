@@ -2,20 +2,20 @@ import { useEffect, useRef, useState } from "react";
 
 import getFilteredLocalCharacterList from "src/helper/filterLocalCharcterList";
 import getVisibleCharacterList from "src/helper/getVisibleCharacterList";
-import { LocalCharacterType } from "src/types/character";
-
-import "./charactersBox.css";
+import { LocalCharacter } from "src/types/character";
 import { useCharactersContext } from "src/context/CharactersContext";
 import { useFilterContext } from "src/context/FilterContext";
 
-type UseCharactersBoxType = () => {
+import "./charactersBox.css";
+
+type UseCharactersBoxReturned = {
   ref: React.MutableRefObject<undefined>;
-  visibleCharacters: LocalCharacterType[];
+  visibleCharacters: LocalCharacter[];
   filteredCharactersLength: number;
   handleScroll: React.UIEventHandler<HTMLDivElement>;
 };
 
-export const useCharactersBox: UseCharactersBoxType = () => {
+export default function useCharactersBox(): UseCharactersBoxReturned {
   const { characters } = useCharactersContext();
   const { filterCircuit } = useFilterContext();
 
@@ -48,6 +48,4 @@ export const useCharactersBox: UseCharactersBoxType = () => {
     filteredCharactersLength: filteredCharacters.length,
     handleScroll,
   };
-};
-
-export default useCharactersBox;
+}

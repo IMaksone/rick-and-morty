@@ -1,21 +1,19 @@
-import { Character } from "./Character";
-import { LocalCharacterType } from "src/types/character";
+import Character from "./Character";
+import { LocalCharacter } from "src/types/character";
 import CharacterListWrapper from "./CharacterListWrapper";
 
-interface CharacterListInterface {
-  visibleCharacters: LocalCharacterType[];
+interface CharacterListProps {
+  visibleCharacters: LocalCharacter[];
   count: number;
 }
 
-export const CharacterList = ({
+export default function CharacterList({
   visibleCharacters,
-  count
-}: CharacterListInterface) => {
-
-  // key надо пересмотреть, лучше использовать id
+  count,
+}: CharacterListProps) {
   const render = visibleCharacters.map((character) => (
-    <Character key={character.index} character={character} />
+    <Character key={character.data.id} character={character} />
   ));
 
   return <CharacterListWrapper count={count}>{render}</CharacterListWrapper>;
-};
+}

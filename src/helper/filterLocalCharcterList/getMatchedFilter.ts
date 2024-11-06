@@ -1,10 +1,10 @@
 import { FilterCircuitType, FilterType } from "src/constants/filtersShema";
-import { ApiCharacterType } from "src/types/character";
+import { ApiCharacter } from "src/types/character";
 import filterByValuesObject from "./filterByValuesObject";
 import filterByValue from "./filterByValue";
 
 export default function getMatchedFilter(
-  apiCharacter: ApiCharacterType,
+  apiCharacter: ApiCharacter,
   activeFilterCircuit: FilterCircuitType
 ) {
   const activeFilterCircuitKeys = Object.keys(activeFilterCircuit);

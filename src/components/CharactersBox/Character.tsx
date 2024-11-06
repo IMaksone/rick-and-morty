@@ -1,17 +1,17 @@
-import { CharacterStatusType, LocalCharacterType } from "src/types/character";
+import { CharacterStatus, LocalCharacter } from "src/types/character";
 import CharacterWrapper from "./CharacterWrapper";
 import { useModalContext } from "src/context/ModalContext";
 
-interface CharacterInterface {
-  character: LocalCharacterType;
+interface CharacterProps {
+  character: LocalCharacter;
 }
 
-const getIndicatorClassName = (characterStatus: CharacterStatusType) =>
+const getIndicatorClassName = (characterStatus: CharacterStatus) =>
   characterStatus === "Alive"
     ? "character-indicator-alive"
     : "character-indicator-dead";
 
-export const Character = ({ character }: CharacterInterface) => {
+export default function Character({ character }: CharacterProps) {
   const { index, data } = character;
 
   const { setCharacterForModal } = useModalContext();
@@ -47,4 +47,4 @@ export const Character = ({ character }: CharacterInterface) => {
       </div>
     </CharacterWrapper>
   );
-};
+}

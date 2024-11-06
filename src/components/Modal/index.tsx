@@ -1,7 +1,7 @@
 import useModalCharacterFieldList, {
   ModalCharacterFieldType
 } from "./useModalCharacterFieldList";
-import { ApiCharacterEpisodeType } from "src/types/character";
+import { ApiCharacterEpisode } from "src/types/character";
 import { useModal } from "./useModal";
 
 import "./modal.css";
@@ -46,7 +46,7 @@ const CharacterModalDescription = () => {
 };
 
 interface CharacterModalEpisodesInterface {
-  episode: ApiCharacterEpisodeType;
+  episode: ApiCharacterEpisode;
 }
 
 const CharacterModalEpisodes = ({
