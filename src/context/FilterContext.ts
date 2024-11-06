@@ -3,7 +3,7 @@ import { createContext, useContext } from "react";
 import { FILTER_CIRCUIT, FilterCircuitType } from "src/constants/filtersShema";
 
 type ContextProps = {
-  filterCircuit: FilterCircuitType;
+  fil: FilterCircuitType;
   setFilterCircuit: (filterCircuit: FilterCircuitType) => void;
 };
 
