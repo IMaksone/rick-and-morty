@@ -1,9 +1,7 @@
-import { FilterCircuitType, FilterType } from "src/constants/filtersShema";
+import { Filter, FiltersData } from "src/types/filters";
 
-export default function getActiveFilterCircuit(
-  filterCircuit: FilterCircuitType
-) {
-  let activeFilterCircuit: FilterCircuitType = {};
+export default function getActiveFiltersData(filterCircuit: FiltersData) {
+  let activeFilterCircuit: FiltersData = {};
 
   const filterCircuitKeys = Object.keys(filterCircuit);
 
@@ -20,7 +18,7 @@ export default function getActiveFilterCircuit(
   return activeFilterCircuit;
 }
 
-const isFilterActive = (filter: FilterType) => {
+const isFilterActive = (filter: Filter) => {
   if (filter.valuesObject) {
     const valuesKeys = Object.keys(filter.valuesObject);
 

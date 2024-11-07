@@ -7,3 +7,7 @@ export type Filter = {
   value?: string;
   valuesObject?: Object;
 };
+
+export type FiltersData = {
+  [key in FilterKey]?: Filter;
+};

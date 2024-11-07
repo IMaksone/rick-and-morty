@@ -1,5 +1,5 @@
 import CharacterList from "./CharacterList";
-import useCharactersBox from "./useCharactersBox";
+import useCharactersBox from "src/hooks/characters/useCharactersBox";
 
 import "./charactersBox.css";
 

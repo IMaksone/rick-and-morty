@@ -1,10 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-import getFilteredLocalCharacterList from "src/helper/filterLocalCharcterList";
 import getVisibleCharacterList from "src/helper/getVisibleCharacterList";
 import { LocalCharacter } from "src/types/character";
-import { useCharactersContext } from "src/context/CharactersContext";
-import { useFilterContext } from "src/context/FilterContext";
 
 import "./charactersBox.css";
 
@@ -16,12 +13,10 @@ type UseCharactersBoxReturned = {
 };
 
 export default function useCharactersBox(): UseCharactersBoxReturned {
-  const { characters } = useCharactersContext();
-  const { filterCircuit } = useFilterContext();
+  const filteredCharacters = useFilteredCharac();
 
   const ref = useRef();
 
-  const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [visibleCharacters, setVisibleCharacters] = useState([]);
 
   useEffect(() => {
@@ -30,22 +25,21 @@ export default function useCharactersBox(): UseCharactersBoxReturned {
     setVisibleCharacters(visible);
   }, [filteredCharacters]);
 
-  useEffect(() => {
-    const filtered = getFilteredLocalCharacterList(characters, filterCircuit);
-
-    setFilteredCharacters(filtered);
-  }, [characters, filterCircuit]);
-
   const handleScroll: React.UIEventHandler<HTMLDivElement> = (event) => {
     const visible = getVisibleCharacterList(filteredCharacters, event.target);
 
     setVisibleCharacters(visible);
   };
 
+  const handleScrollCallback = useCallback(handleScroll, [
+    filteredCharacters,
+    setVisibleCharacters,
+  ]);
+
   return {
     ref,
     visibleCharacters,
     filteredCharactersLength: filteredCharacters.length,
-    handleScroll,
+    handleScroll: handleScrollCallback
   };
 }
