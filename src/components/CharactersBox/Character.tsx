@@ -1,6 +1,6 @@
 import { CharacterStatus, LocalCharacter } from "src/types/character";
 import CharacterWrapper from "./CharacterWrapper";
-import { useModalContext } from "src/context/ModalContext";
+import { useDispatchCharacterForModal } from "src/store/dispatch/dispatchModal";
 
 interface CharacterProps {
   character: LocalCharacter;
@@ -14,10 +14,10 @@ const getIndicatorClassName = (characterStatus: CharacterStatus) =>
 export default function Character({ character }: CharacterProps) {
   const { index, data } = character;
 
-  const { setCharacterForModal } = useModalContext();
+  const dispatchCharacterForModal = useDispatchCharacterForModal();
 
   const addModal = () => {
-    setCharacterForModal(data);
+    dispatchCharacterForModal(data);
   };
 
   const characterStatusClassName =
