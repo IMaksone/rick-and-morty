@@ -2,16 +2,16 @@ import CharactersBox from "./components/CharactersBox";
 import FiltersBox from "./components/FiltersBox";
 import Loader from "./components/Loader";
 import Modal from "./components/Modal";
-import { useCharactersContext } from "./context/CharactersContext";
+import { useApiCharactersSelector } from "./store/selector/characterSelectors";
 
 import './styles/app.css'
 
 function App() {
-  const { characters } = useCharactersContext();
+  const apiCharacters = useApiCharactersSelector()
 
   return (
     <div className="app">
-      <Loader is={!!characters.length}>
+      <Loader is={!!apiCharacters.length}>
         <AppContent />
       </Loader>
     </div>
