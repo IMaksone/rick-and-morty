@@ -4,15 +4,15 @@ import { ActionCreatorWithOptionalPayload } from "@reduxjs/toolkit";
 
 import { StoreDispatch } from "src/store/makeStore";
 
+type Seter<Payload> = ActionCreatorWithOptionalPayload<Payload>;
+
 const useStoreDispatch = () => useDispatch<StoreDispatch>();
 
-export default function createUseStoreDispatch<State>(
-  seter: ActionCreatorWithOptionalPayload<State[keyof State]>
-) {
+export default function createUseStoreDispatch<Payload>(seter: Seter<Payload>) {
   return () => {
     const dispatch = useStoreDispatch();
 
-    const callback = (value: State[keyof State]) => dispatch(seter(value));
+    const callback = (value: Payload) => dispatch(seter(value));
 
     const dispatchFieldValue = useCallback(callback, [dispatch]);
 

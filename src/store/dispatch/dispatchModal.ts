@@ -1,10 +1,12 @@
+import { ApiCharacter } from "src/types/character";
 import modalSlice from "../slices/modalSlice";
-import { ModalState } from "../types";
 import createUseStoreDispatch from "./common/createUseStoreDispatch";
 
-const { setCharacterForModal } = modalSlice.actions;
+const { setCharacterForModal, hideModal } = modalSlice.actions;
 
 const useDispatchCharacterForModal =
-  createUseStoreDispatch<ModalState>(setCharacterForModal);
+  createUseStoreDispatch<ApiCharacter>(setCharacterForModal);
 
-export { useDispatchCharacterForModal };
+const useHideModal = createUseStoreDispatch<undefined>(hideModal);
+
+export { useDispatchCharacterForModal, useHideModal };
