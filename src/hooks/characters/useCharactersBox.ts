@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import getVisibleCharacterList from "src/helper/getVisibleCharacterList";
 import { LocalCharacter } from "src/types/character";
+import { useFilteredCharactersSelector } from "src/store/selector/characterSelectors";
 
 import "./charactersBox.css";
 
@@ -13,7 +14,7 @@ type UseCharactersBoxReturned = {
 };
 
 export default function useCharactersBox(): UseCharactersBoxReturned {
-  const filteredCharacters = useFilteredCharac();
+  const filteredCharacters = useFilteredCharactersSelector();
 
   const ref = useRef();
 

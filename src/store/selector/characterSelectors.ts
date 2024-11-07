@@ -1,15 +1,17 @@
 import useStoreSelector from "./common/useStoreSelector";
-import { CharactersState } from "../types";
 import { FilterKey } from "src/types/filters";
 
-const useApiCharactersSelector = () => useCharactersByKey("apiChracters");
+const useApiCharactersSelector = () =>
+  useStoreSelector((state) => state.characters.apiChracters);
 
-const useLocalCharactersSelector = () => useCharactersByKey("localCharacters");
+const useLocalCharactersSelector = () =>
+  useStoreSelector((state) => state.characters.localCharacters);
 
 const useFilteredCharactersSelector = () =>
-  useCharactersByKey("filteredCharacters");
+  useStoreSelector((state) => state.characters.filteredCharacters);
 
-const useFiltersDataSelector = () => useCharactersByKey("filtersData");
+const useFiltersDataSelector = () =>
+  useStoreSelector((state) => state.characters.filtersData);
 
 const useFilterByKeySelector = (key: FilterKey) =>
   useStoreSelector((state) => state.characters.filtersData[key]);
@@ -21,7 +23,3 @@ export {
   useFiltersDataSelector,
   useFilterByKeySelector,
 };
-
-function useCharactersByKey(key: keyof CharactersState) {
-  return useStoreSelector((state) => state.characters[key]);
-}
