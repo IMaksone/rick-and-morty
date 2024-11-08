@@ -16,4 +16,5 @@ const hideModal = (state: ModalState) => {
 
   return state;
 };
+
 export { setCharacterForModal, hideModal };

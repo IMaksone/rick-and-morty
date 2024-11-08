@@ -1,16 +1,17 @@
-import { Filter, FilterKey } from "src/types/filters";
 import charactersSlice from "../slices/charactersSlice";
 import createUseStoreDispatch from "./common/createUseStoreDispatch";
-import { ApiCharacter } from "src/types/character";
 
-const { setApiCharacters, setFilterByKey } = charactersSlice.actions;
+const { setApiCharacters, addApiCharacters, setFilterByKey } =
+  charactersSlice.actions;
 
-const useDispatchApiCharacters =
-  createUseStoreDispatch<ApiCharacter[]>(setApiCharacters);
+const useDispatchApiCharacters = createUseStoreDispatch(setApiCharacters);
 
-const useDispatchFilterByKey = createUseStoreDispatch<{
-  key: FilterKey;
-  value: Filter;
-}>(setFilterByKey);
+const useDispatchAddApiCharacters = createUseStoreDispatch(addApiCharacters);
 
-export { useDispatchApiCharacters, useDispatchFilterByKey };
+const useDispatchFilterByKey = createUseStoreDispatch(setFilterByKey);
+
+export {
+  useDispatchApiCharacters,
+  useDispatchAddApiCharacters,
+  useDispatchFilterByKey,
+};

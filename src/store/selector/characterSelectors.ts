@@ -1,8 +1,11 @@
 import useStoreSelector from "./common/useStoreSelector";
 import { FilterKey } from "src/types/filters";
 
+const useNextApiCharactersEndpointSelector = () =>
+  useStoreSelector((state) => state.characters.nextApiCharacterEndpoint);
+
 const useApiCharactersSelector = () =>
-  useStoreSelector((state) => state.characters.apiChracters);
+  useStoreSelector((state) => state.characters.apiCharacters);
 
 const useLocalCharactersSelector = () =>
   useStoreSelector((state) => state.characters.localCharacters);
@@ -17,6 +20,7 @@ const useFilterByKeySelector = (key: FilterKey) =>
   useStoreSelector((state) => state.characters.filtersData[key]);
 
 export {
+  useNextApiCharactersEndpointSelector,
   useApiCharactersSelector,
   useLocalCharactersSelector,
   useFilteredCharactersSelector,

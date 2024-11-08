@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { SLICE_NAMES } from "../enums";
 import { CharactersState } from "src/store/types";
 import { FiltersData } from "src/types/filters";
-import { setApiCharacters, setFilterByKey } from "./seters";
+import { setApiCharacters, addApiCharacters, setFilterByKey } from "./seters";
 
 const initialFiltersData: FiltersData = {
   name: {
@@ -17,7 +17,8 @@ const initialFiltersData: FiltersData = {
 };
 
 const initialState: CharactersState = {
-  apiChracters: [],
+  nextApiCharacterEndpoint: "",
+  apiCharacters: [],
   localCharacters: [],
   filteredCharacters: [],
   filtersData: initialFiltersData,
@@ -28,6 +29,7 @@ const charactersSlice = createSlice({
   initialState,
   reducers: {
     setApiCharacters,
+    addApiCharacters,
     setFilterByKey,
   },
 });

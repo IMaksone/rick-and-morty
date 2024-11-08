@@ -1,32 +1,57 @@
 import { SliceSeter } from "../types";
 import { CharactersState } from "src/store/types";
 import { ApiCharacter } from "src/types/character";
-import getLocalCharacters from "src/helper/characters/getLocalCharacters";
 import filterLocalCharactersIfNeed from "src/helper/characters/filterLocalCharactersIfNeed";
-import getFiltersData from "src/helper/filters/getFiltersData";
 import { Filter, FilterKey } from "src/types/filters";
+import getParamsForNewApiCharacters from "./getParamsForNewApiCharacters";
+import mutateState from "../mutateState";
 
-const setApiCharacters: SliceSeter<CharactersState, ApiCharacter[]> = (
-  state,
-  { payload }
-) => {
-  const localCharacters = getLocalCharacters(payload);
-  const filteredCharacters = filterLocalCharactersIfNeed(
-    localCharacters,
+type SetApiCharactersPayload = {
+  nextApiCharacterEndpoint: string;
+  apiCharacters: ApiCharacter[];
+};
+type SetApiCharacters = SliceSeter<CharactersState, SetApiCharactersPayload>;
+
+const setApiCharacters: SetApiCharacters = (state, { payload }) => {
+  const params = getParamsForNewApiCharacters(
+    payload.apiCharacters,
     state.filtersData
   );
 
-  const filtersData = getFiltersData(payload, state.filtersData);
-
-  return {
-    ...state,
-    localCharacters,
-    filteredCharacters,
-    filtersData,
+  const newState = {
+    ...params,
+    apiCharacters: payload.apiCharacters,
+    nextApiCharacterEndpoint: payload.nextApiCharacterEndpoint,
   };
+
+  mutateState(state, newState);
+
+  return state;
 };
 
-type SetFilterByKey = SliceSeter<CharactersState, { key: FilterKey; value: Filter }>;
+const addApiCharacters: SetApiCharacters = (state, { payload }) => {
+  const newApiCharacters = [...state.apiCharacters, ...payload.apiCharacters];
+
+  const params = getParamsForNewApiCharacters(
+    newApiCharacters,
+    state.filtersData
+  );
+
+  const newState = {
+    ...params,
+    nextApiCharacterEndpoint: payload.nextApiCharacterEndpoint,
+    apiCharacters: newApiCharacters,
+  };
+
+  mutateState(state, newState);
+
+  return state;
+};
+
+type SetFilterByKey = SliceSeter<
+  CharactersState,
+  { key: FilterKey; value: Filter }
+>;
 
 const setFilterByKey: SetFilterByKey = (state, { payload }) => {
   const newFiltersData = {
@@ -39,14 +64,14 @@ const setFilterByKey: SetFilterByKey = (state, { payload }) => {
     newFiltersData
   );
 
-  return {
-    ...state,
+  const newState = {
     filteredCharacters,
     filtersData: newFiltersData,
   };
+
+  mutateState(state, newState);
+
+  return state;
 };
 
-export {
-  setApiCharacters,
-  setFilterByKey,
-};
+export { setApiCharacters, addApiCharacters, setFilterByKey };

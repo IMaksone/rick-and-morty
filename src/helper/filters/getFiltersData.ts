@@ -1,30 +1,23 @@
 import { ApiCharacter } from "src/types/character";
-import { FilterKey, FiltersData } from "src/types/filters";
+import { FiltersData } from "src/types/filters";
 
 export default function getFiltersData(
   characters: ApiCharacter[],
   initFiltersData: FiltersData
 ): FiltersData {
-  const filters = initFiltersData;
-  const filterKeys = Object.keys(filters);
+  const filtersData = initFiltersData;
 
-  forEachCharacterCallback.bind({ filterKeys });
+  const characterCallback = (character: ApiCharacter) => {
+    for (const filterKey in filtersData) {
+      if (filtersData[filterKey].valuesObject) {
+        const filter = filtersData[filterKey];
 
-  characters.forEach(forEachCharacterCallback);
+        filter.valuesObject[character[filterKey]] = false;
+      }
+    }
+  };
 
-  return filters;
-}
+  characters.forEach(characterCallback);
 
-function forEachFilterCallback(filterKey: FilterKey) {
-  const { filters, character } = this;
-
-  if (filters[filterKey].valuesObject) {
-    filters[filterKey].valuesObject[character[filterKey]] = false;
-  }
-}
-
-function forEachCharacterCallback(character: ApiCharacter) {
-  forEachFilterCallback.bind({ character });
-
-  this.filterKeys.forEach(forEachFilterCallback);
+  return filtersData;
 }
