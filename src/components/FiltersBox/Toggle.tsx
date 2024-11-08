@@ -1,8 +1,8 @@
-import { FilterKeyType } from "src/constants/filtersShema";
+import { FilterKey } from "src/types/filters";
 import useToggle from "./useToggle";
 
 interface ToggleProps {
-  filterKey: FilterKeyType;
+  filterKey: FilterKey;
   toggleKey: string;
 }
 

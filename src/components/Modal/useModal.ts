@@ -1,16 +1,21 @@
 import { ESC_KEY } from "src/constants/keyboardKeys";
-import { useModalContext } from "src/context/ModalContext";
+import {
+  useDispatchCharacterForModal,
+  useDispatchHideModal,
+} from "src/store/dispatch/dispatchModal";
+import { useModalCharacterSelector } from "src/store/selector/modalSelector";
 
 export const useModal = () => {
-  const { characterForModal, hideModal } = useModalContext();
+  const characterForModal = useModalCharacterSelector();
+  const dispatchHideModal = useDispatchHideModal();
 
   const handleEscape: React.KeyboardEventHandler<HTMLDivElement> = (event) => {
-    if (event.key === ESC_KEY) hideModal();
+    if (event.key === ESC_KEY) dispatchHideModal();
   };
 
   return {
     characterForModal,
     handleEscape,
-    hideModal
+    hideModal: dispatchHideModal,
   };
 };

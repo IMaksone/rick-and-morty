@@ -1,29 +1,29 @@
 import { useState } from "react";
 
-import { FilterKeyType } from "src/constants/filtersShema";
-import { useFilterContext } from "src/context/FilterContext";
-import getThrottledFunction from "src/helper/getThrottledFunction";
+import { useDispatchFilterByKey } from "src/store/dispatch/dispatchCharacters";
+import { useFilterByKeySelector } from "src/store/selector/characterSelectors";
+import { FilterKey } from "src/types/filters";
 
 type UseInputReturned = {
   value: string;
   handleChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-export default function useInput(filterKey: FilterKeyType): UseInputReturned {
-  const { filterCircuit, setFilterCircuit } = useFilterContext();
-  const throttled = getThrottledFunction(setFilterCircuit);
+export default function useInput(filterKey: FilterKey): UseInputReturned {
+  const filterByKey = useFilterByKeySelector(filterKey);
+  const dispatchFilterByKey = useDispatchFilterByKey();
 
-  const [value, setValue] = useState(filterCircuit[filterKey].value);
+  const [value, setValue] = useState(filterByKey.value);
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const targetValue = event.target.value;
 
     setValue(targetValue);
 
-    const newFilters = { ...filterCircuit };
-    newFilters[filterKey].value = targetValue;
+    const newFilter = filterByKey;
+    newFilter.value = targetValue;
 
-    throttled(newFilters);
+    dispatchFilterByKey({ key: filterKey, value: newFilter });
   };
 
   return {

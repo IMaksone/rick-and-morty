@@ -1,9 +1,9 @@
-import { FilterType, FilterKeyType } from "src/constants/filtersShema";
+import { Filter, FilterKey } from "src/types/filters";
 import Toggle from "./Toggle";
 
 interface ToggleListWrapperProps {
-  filter: FilterType;
-  filterKey: FilterKeyType;
+  filter: Filter;
+  filterKey: FilterKey;
 }
 
 export default function ToggleListWrapper({

@@ -1,19 +1,19 @@
 import { ReactNode } from "react";
 
 import Filter from "./Filter";
-import { FilterKeyType } from "src/constants/filtersShema";
-import { useFilterContext } from "src/context/FilterContext";
+import { useFiltersDataSelector } from "src/store/selector/characterSelectors";
+import { FilterKey } from "src/types/filters";
 
 import "./filtersBox.css";
 
 export default function useFiltersBox(): ReactNode {
-  const { filterCircuit } = useFilterContext();
+  const filtersData = useFiltersDataSelector();
 
-  const filterCircuitKeys = Object.keys(filterCircuit);
+  const filterCircuitKeys = Object.keys(filtersData);
 
   const renderFilterList = filterCircuitKeys.map((key) => (
     <div key={key} className="filter">
-      <Filter filter={filterCircuit[key]} filterKey={key as FilterKeyType} />
+      <Filter filter={filtersData[key]} filterKey={key as FilterKey} />
     </div>
   ));
 

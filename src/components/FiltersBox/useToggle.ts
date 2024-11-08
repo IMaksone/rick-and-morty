@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-import { FilterKeyType } from "src/constants/filtersShema";
-import { useFilterContext } from "src/context/FilterContext";
+import { useDispatchFilterByKey } from "src/store/dispatch/dispatchCharacters";
+import { useFilterByKeySelector } from "src/store/selector/characterSelectors";
+import { FilterKey } from "src/types/filters";
 
 type UseFilterCheckboxReturned = {
   isChecked: boolean;
@@ -9,22 +10,21 @@ type UseFilterCheckboxReturned = {
 };
 
 export default function useFilterCheckbox(
-  filterKey: FilterKeyType,
+  filterKey: FilterKey,
   checkboxKey: string
 ): UseFilterCheckboxReturned {
-  const { filterCircuit, setFilterCircuit } = useFilterContext();
+  const filter = useFilterByKeySelector(filterKey);
+  const dispatchFilterByKey = useDispatchFilterByKey();
 
-  const [isChecked, setIsChecked] = useState(
-    filterCircuit[filterKey].valuesObject[checkboxKey]
-  );
+  const [isChecked, setIsChecked] = useState(filter.valuesObject[checkboxKey]);
 
   const handleClick = () => {
     setIsChecked(!isChecked);
 
-    const newFilters = { ...filterCircuit };
-    newFilters[filterKey].valuesObject[checkboxKey] = !isChecked;
+    const newFilter = { ...filter };
+    newFilter.valuesObject[checkboxKey] = !isChecked;
 
-    setFilterCircuit(newFilters);
+    dispatchFilterByKey({ key: filterKey, value: newFilter });
   };
 
   return { isChecked, handleClick };

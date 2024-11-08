@@ -1,13 +1,13 @@
+import { Filter, FilterKey } from "src/types/filters";
 import Input from "./Input";
 import ToggleListWrapper from "./ToggleListWrapper";
-import { FilterKeyType, FilterType } from "src/constants/filtersShema";
 
 interface FilterProps {
-  filter: FilterType;
-  filterKey: FilterKeyType;
+  filter: Filter;
+  filterKey: FilterKey;
 }
 
-export default function Filter({ filter, filterKey }: FilterProps) {
+export default function FilterComponent({ filter, filterKey }: FilterProps) {
   if (filter.type === "input") {
     return <Input filterKey={filterKey} />;
   } else {

@@ -3,7 +3,8 @@ import { CharactersState } from "src/store/types";
 import { ApiCharacter } from "src/types/character";
 import getLocalCharacters from "src/helper/characters/getLocalCharacters";
 import filterLocalCharactersIfNeed from "src/helper/characters/filterLocalCharactersIfNeed";
-import createFilterSeter from "./createFilterSeter";
+import getFiltersData from "src/helper/filters/getFiltersData";
+import { Filter, FilterKey } from "src/types/filters";
 
 const setApiCharacters: SliceSeter<CharactersState, ApiCharacter[]> = (
   state,
@@ -15,24 +16,37 @@ const setApiCharacters: SliceSeter<CharactersState, ApiCharacter[]> = (
     state.filtersData
   );
 
+  const filtersData = getFiltersData(payload, state.filtersData);
+
   return {
     ...state,
     localCharacters,
     filteredCharacters,
+    filtersData,
   };
 };
 
-const setNameFilter = createFilterSeter("name");
-const setTypeFilter = createFilterSeter("type");
-const setStatusFilter = createFilterSeter("status");
-const setSpeciesFilter = createFilterSeter("species");
-const setGenderFilter = createFilterSeter("gender");
+type SetFilterByKey = SliceSeter<CharactersState, { key: FilterKey; value: Filter }>;
+
+const setFilterByKey: SetFilterByKey = (state, { payload }) => {
+  const newFiltersData = {
+    ...state.filtersData,
+    [payload.key]: payload.value,
+  };
+
+  const filteredCharacters = filterLocalCharactersIfNeed(
+    state.localCharacters,
+    newFiltersData
+  );
+
+  return {
+    ...state,
+    filteredCharacters,
+    filtersData: newFiltersData,
+  };
+};
 
 export {
   setApiCharacters,
-  setNameFilter,
-  setTypeFilter,
-  setStatusFilter,
-  setSpeciesFilter,
-  setGenderFilter,
+  setFilterByKey,
 };

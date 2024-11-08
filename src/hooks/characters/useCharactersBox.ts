@@ -4,8 +4,6 @@ import getVisibleCharacterList from "src/helper/getVisibleCharacterList";
 import { LocalCharacter } from "src/types/character";
 import { useFilteredCharactersSelector } from "src/store/selector/characterSelectors";
 
-import "./charactersBox.css";
-
 type UseCharactersBoxReturned = {
   ref: React.MutableRefObject<undefined>;
   visibleCharacters: LocalCharacter[];
@@ -41,6 +39,6 @@ export default function useCharactersBox(): UseCharactersBoxReturned {
     ref,
     visibleCharacters,
     filteredCharactersLength: filteredCharacters.length,
-    handleScroll: handleScrollCallback
+    handleScroll: handleScrollCallback,
   };
 }

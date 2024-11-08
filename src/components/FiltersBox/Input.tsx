@@ -1,8 +1,8 @@
-import { FilterKeyType } from "src/constants/filtersShema";
+import { FilterKey } from "src/types/filters";
 import useInput from "./useInput";
 
 interface InputProps {
-  filterKey: FilterKeyType;
+  filterKey: FilterKey;
 }
 
 export default function Input({ filterKey }: InputProps) {

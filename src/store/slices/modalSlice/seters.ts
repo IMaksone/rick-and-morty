@@ -11,7 +11,7 @@ const setCharacterForModal: SliceSeter<ModalState, ApiCharacter> = (
   return state;
 };
 
-const hideModal: SliceSeter<ModalState, undefined> = (state) => {
+const hideModal = (state: ModalState) => {
   state.character = null;
 
   return state;

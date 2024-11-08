@@ -7,6 +7,6 @@ const { setCharacterForModal, hideModal } = modalSlice.actions;
 const useDispatchCharacterForModal =
   createUseStoreDispatch<ApiCharacter>(setCharacterForModal);
 
-const useHideModal = createUseStoreDispatch<undefined>(hideModal);
+const useDispatchHideModal = createUseStoreDispatch(hideModal);
 
-export { useDispatchCharacterForModal, useHideModal };
+export { useDispatchCharacterForModal, useDispatchHideModal };

@@ -1,5 +1,5 @@
 import useModalCharacterFieldList, {
-  ModalCharacterFieldType
+  ModalCharacterFieldType,
 } from "./useModalCharacterFieldList";
 import { ApiCharacterEpisode } from "src/types/character";
 import { useModal } from "./useModal";
@@ -11,10 +11,12 @@ export const Modal = () => {
 
   if (!characterForModal) return <></>;
 
+  const handleClick = () => hideModal();
+
   return (
     <div className="modal" tabIndex={0} onKeyDown={handleEscape}>
       <div className="modal-character">
-        <div className="close-modal-button" onClick={hideModal}>
+        <div className="close-modal-button" onClick={handleClick}>
           Esc
         </div>
         <div className="modal-character-body">
@@ -27,7 +29,7 @@ export const Modal = () => {
         </div>
         <CharacterModalEpisodes episode={characterForModal.episode} />
       </div>
-      <div className="modal-back" onClick={hideModal}></div>
+      <div className="modal-back" onClick={handleClick}></div>
     </div>
   );
 };
@@ -50,7 +52,7 @@ interface CharacterModalEpisodesInterface {
 }
 
 const CharacterModalEpisodes = ({
-  episode
+  episode,
 }: CharacterModalEpisodesInterface) => {
   const renderEpisodeArrayElement = (element: string, index: number) => (
     //key ???

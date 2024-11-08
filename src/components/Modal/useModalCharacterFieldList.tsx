@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { useModalContext } from "src/context/ModalContext";
 import { getCreatedDate } from "src/helper/characters";
+import { useModalCharacterSelector } from "src/store/selector/modalSelector";
 import { CharacterStatus } from "src/types/character";
 
 type GetModalCharacterFieldListType = () => ModalCharacterFieldType[];
@@ -14,7 +14,7 @@ export type ModalCharacterFieldType = {
 
 export const useModalCharacterFieldList: GetModalCharacterFieldListType =
   () => {
-    const { characterForModal } = useModalContext();
+    const characterForModal = useModalCharacterSelector();
 
     const { name, status, species, gender, type, created, location, origin } =
       characterForModal;
@@ -26,16 +26,13 @@ export const useModalCharacterFieldList: GetModalCharacterFieldListType =
       getType(type),
       getCreated(created),
       getLocationOrOrigin(location.name, location.url),
-      getLocationOrOrigin(origin.name, origin.url)
+      getLocationOrOrigin(origin.name, origin.url),
     ];
   };
 
 export default useModalCharacterFieldList;
 
-const getName = (
-  characterName: string,
-  characterStatus: CharacterStatus
-) => {
+const getName = (characterName: string, characterStatus: CharacterStatus) => {
   const statusClassName =
     characterStatus === "Alive"
       ? "character-indicator-alive"
@@ -50,28 +47,28 @@ const getName = (
 
   return {
     title: characterName,
-    render
+    render,
   };
 };
 
 const getSpecies = (characterSpecies: string) => ({
   name: "Species",
-  text: characterSpecies
+  text: characterSpecies,
 });
 
 const getGender = (characterGender: string) => ({
   name: "Gender",
-  text: characterGender
+  text: characterGender,
 });
 
 const getType = (characterType: string) => ({
   name: "Type",
-  text: characterType
+  text: characterType,
 });
 
 const getCreated = (characterCreated: string) => ({
   name: "Species",
-  text: getCreatedDate(characterCreated)
+  text: getCreatedDate(characterCreated),
 });
 
 const getLocationOrOrigin = (
@@ -94,6 +91,6 @@ const getLocationOrOrigin = (
 
   return {
     name: "Location",
-    render
+    render,
   };
 };

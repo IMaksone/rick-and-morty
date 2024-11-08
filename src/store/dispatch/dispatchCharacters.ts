@@ -1,36 +1,16 @@
-import { Filter } from "src/types/filters";
+import { Filter, FilterKey } from "src/types/filters";
 import charactersSlice from "../slices/charactersSlice";
 import createUseStoreDispatch from "./common/createUseStoreDispatch";
 import { ApiCharacter } from "src/types/character";
 
-const {
-  setApiCharacters,
-  setGenderFilter,
-  setNameFilter,
-  setSpeciesFilter,
-  setStatusFilter,
-  setTypeFilter,
-} = charactersSlice.actions;
+const { setApiCharacters, setFilterByKey } = charactersSlice.actions;
 
 const useDispatchApiCharacters =
   createUseStoreDispatch<ApiCharacter[]>(setApiCharacters);
 
-const useDispatchGenderFilter = createUseStoreDispatch<Filter>(setGenderFilter);
+const useDispatchFilterByKey = createUseStoreDispatch<{
+  key: FilterKey;
+  value: Filter;
+}>(setFilterByKey);
 
-const useDispatchNameFilter = createUseStoreDispatch<Filter>(setNameFilter);
-
-const useDispatchSpeciesFilter =
-  createUseStoreDispatch<Filter>(setSpeciesFilter);
-
-const useDispatchStatusFilter = createUseStoreDispatch<Filter>(setStatusFilter);
-
-const useDispatchTypeFilter = createUseStoreDispatch<Filter>(setTypeFilter);
-
-export {
-  useDispatchApiCharacters,
-  useDispatchGenderFilter,
-  useDispatchNameFilter,
-  useDispatchSpeciesFilter,
-  useDispatchStatusFilter,
-  useDispatchTypeFilter,
-};
+export { useDispatchApiCharacters, useDispatchFilterByKey };
