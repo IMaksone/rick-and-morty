@@ -13,7 +13,7 @@
   top: 0px;
   height: 100%;
   width: 100%;
-  background-color: #111111;
+  background-color: var(--dark-color);
   opacity: 0.5;
 }
 
@@ -43,7 +43,7 @@
   cursor: pointer;
   padding: 0px 5px 2px 5px;
   border-radius: 5px;
-  background-color: #dedede;
+  background-color: var(--light-color);
 }
 
 .close-modal-button:hover {

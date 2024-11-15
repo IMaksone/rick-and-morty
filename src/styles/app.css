@@ -1,7 +1,10 @@
+
+@import url("variables.css");
+
 .app {
   position: relative;
   height: 100vh;
-  background-color: #111111;
+  background-color: var(--dark-color);
 }
 
 .text-dark {
@@ -9,7 +12,7 @@
 }
 
 .text-light {
-  color: #dedede;
+  color: var(--light-color);
 }
 
 .text-ellipsis {
@@ -57,7 +60,7 @@
 }
 
 .character-link:hover {
-  color: #dedede;
+  color: var(--light-color);
 }
 
 .margin-5 {

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { getCreatedDate } from "src/helper/characters";
+import getCreatedDate from "src/helper/getCreatedDate";
 import { useModalCharacterSelector } from "src/store/selector/modalSelector";
 import { CharacterStatus } from "src/types/character";
 

@@ -7,13 +7,17 @@ export default function getFiltersData(
 ): FiltersData {
   const filtersData = initFiltersData;
 
+  const filterCallback = (character: ApiCharacter, filterKey: string) => {
+    if (filtersData[filterKey].valuesObject) {
+      const filter = filtersData[filterKey];
+
+      filter.valuesObject[character[filterKey]] = false;
+    }
+  };
+
   const characterCallback = (character: ApiCharacter) => {
     for (const filterKey in filtersData) {
-      if (filtersData[filterKey].valuesObject) {
-        const filter = filtersData[filterKey];
-
-        filter.valuesObject[character[filterKey]] = false;
-      }
+      filterCallback(character, filterKey);
     }
   };
 

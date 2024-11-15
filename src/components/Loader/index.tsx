@@ -1,19 +1,20 @@
 import { ReactNode } from "react";
 
-import "./loader.css";
-
-const Spinner = () => (
-  <div className="spinner-wr">
-    <div className="spinner"></div>
-  </div>
-);
+import classes from "./loader.module.css";
 
 interface LoaderInterface {
-  is: Boolean;
+  loaded: Boolean;
   children: ReactNode;
 }
 
-export const Loader = ({ is, children }: LoaderInterface) =>
-  is ? children : <Spinner />;
+export default function Loader({ loaded, children }: LoaderInterface) {
+  
+  return<Spinner />
+  // return loaded ? children : <Spinner />;
+}
 
-export default Loader;
+const Spinner = () => (
+  <div className={classes.spiner_wr}>
+    <div className={classes.spinner}></div>
+  </div>
+);

@@ -12,11 +12,9 @@ function App() {
 
   usePullingApiCharacters()
 
-  console.log(apiCharacters)
-
   return (
     <div className="app">
-      <Loader is={!!apiCharacters.length}>
+      <Loader loaded={!!apiCharacters.length}>
         <AppContent />
       </Loader>
     </div>
