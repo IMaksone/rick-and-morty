@@ -1,4 +1,4 @@
-const CHARACTER_ENDPOINT = "https://rickandmortyapi.com/api/character?page=1";
+const CHARACTER_ENDPOINT = "https://rickandmortyapi.com/api/character";
 
 export default async function fetchCharacters(nextEndpoint?: string) {
   const endpoint = nextEndpoint || CHARACTER_ENDPOINT;

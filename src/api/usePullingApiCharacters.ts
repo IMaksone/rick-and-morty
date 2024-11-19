@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import fetchCharacters from "src/api/queries/characters";
+import fetchCharacters from "./characters";
 import { useDispatchApiCharacters } from "src/store/dispatch/dispatchCharacters";
 
 export default function usePullingApiCharacters() {

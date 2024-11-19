@@ -3,14 +3,12 @@ import { ReactNode } from "react";
 import classes from "./loader.module.css";
 
 interface LoaderInterface {
-  loaded: Boolean;
-  children: ReactNode;
+  loaded?: Boolean;
+  children?: ReactNode;
 }
 
-export default function Loader({ loaded, children }: LoaderInterface) {
-  
-  return<Spinner />
-  // return loaded ? children : <Spinner />;
+export default function Loader({ loaded, children = <></> }: LoaderInterface) {
+  return loaded ? children : <Spinner />;
 }
 
 const Spinner = () => (

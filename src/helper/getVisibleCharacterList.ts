@@ -5,7 +5,7 @@ const numberOfAdditionalVisibleElements = 3;
 
 export default function getVisibleCharacterList(
   localChracterList: LocalCharacter[],
-  htmlWrapper: any //HTMLDivElement | EventTarget
+  htmlWrapper: HTMLDivElement
 ) {
   let startIndex = 0;
   let endIndex = getNumberOfVisibleElements(window.innerHeight) + 1;

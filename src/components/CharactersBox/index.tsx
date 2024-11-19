@@ -1,18 +1,20 @@
+import { useRef } from "react";
+
 import CharacterList from "./CharacterList";
-import useCharactersBox from "src/hooks/characters/useCharactersBox";
+import useCharactersBox from "./useCharactersBox";
+import Loader from "../Loader";
 
 import "./charactersBox.css";
 
 export default function CharactersBox() {
-  const { ref, visibleCharacters, filteredCharactersLength, handleScroll } =
-    useCharactersBox();
+  const ref = useRef<HTMLDivElement>(null);
+
+  const { visibleCharacters, handleScroll } = useCharactersBox(ref?.current);
 
   return (
     <div className="characters-box" ref={ref} onScroll={handleScroll}>
-      <CharacterList
-        visibleCharacters={visibleCharacters}
-        count={filteredCharactersLength}
-      />
+      <CharacterList visibleCharacters={visibleCharacters} />
+      <Loader />
     </div>
   );
 }

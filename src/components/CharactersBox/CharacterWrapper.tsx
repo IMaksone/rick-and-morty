@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
-import CHARACTER_VIRTUAL_LIST_PARAMS from "src/constants/characterVirtualListParams";
+
+import { CHARACTER_VIRTUAL_LIST_PARAMS } from "src/constants/characterVirtualListParams";
 
 interface CharacterWrapperProps {
   characterIndex: number;
