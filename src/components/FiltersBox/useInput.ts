@@ -20,8 +20,7 @@ export default function useInput(filterKey: FilterKey): UseInputReturned {
 
     setValue(targetValue);
 
-    const newFilter = filterByKey;
-    newFilter.value = targetValue;
+    const newFilter = { ...filterByKey, value: targetValue };
 
     dispatchFilterByKey({ key: filterKey, value: newFilter });
   };

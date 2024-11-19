@@ -7,9 +7,6 @@ const useNextApiCharactersEndpointSelector = () =>
 const useApiCharactersSelector = () =>
   useStoreSelector((state) => state.characters.apiCharacters);
 
-const useLocalCharactersSelector = () =>
-  useStoreSelector((state) => state.characters.localCharacters);
-
 const useFilteredCharactersSelector = () =>
   useStoreSelector((state) => state.characters.filteredCharacters);
 
@@ -22,7 +19,6 @@ const useFilterByKeySelector = (key: FilterKey) =>
 export {
   useNextApiCharactersEndpointSelector,
   useApiCharactersSelector,
-  useLocalCharactersSelector,
   useFilteredCharactersSelector,
   useFiltersDataSelector,
   useFilterByKeySelector,

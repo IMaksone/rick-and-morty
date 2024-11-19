@@ -1,18 +1,26 @@
-import { LocalCharacter } from "src/types/character";
+import { ApiCharacter, LocalCharacter } from "src/types/character";
 import { FiltersData } from "src/types/filters";
-import filterLocalCharacters from "./filterApiCharacterList";
+import filterApiCharacters from "./filterApiCharacters";
 import getActiveFiltersData from "./getActiveFilterCircuit";
+import getLocalCharacters from "./getLocalCharacters";
 
-export default function filterLocalCharactersIfNeed(
-  localCharacters: LocalCharacter[],
+export default function filterApiCharactersIfNeed(
+  apiCharacters: ApiCharacter[],
   filtersData: FiltersData
 ) {
+  const localCharacters = getLocalCharacters(apiCharacters);
+
   const activeFiltersData = getActiveFiltersData(filtersData);
 
   let filtered: LocalCharacter[] = localCharacters;
-
+  
   if (isNeedFiltering(activeFiltersData)) {
-    filtered = filterLocalCharacters(localCharacters, activeFiltersData);
+    const filteredApiCharacters = filterApiCharacters(
+      apiCharacters,
+      activeFiltersData
+    );
+    filtered = getLocalCharacters(filteredApiCharacters);
+
   }
 
   return filtered;

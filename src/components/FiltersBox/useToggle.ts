@@ -21,8 +21,10 @@ export default function useFilterCheckbox(
   const handleClick = () => {
     setIsChecked(!isChecked);
 
-    const newFilter = { ...filter };
-    newFilter.valuesObject[checkboxKey] = !isChecked;
+    const newFilter = {
+      ...filter,
+      valuesObject: { ...filter.valuesObject, [checkboxKey]: !isChecked },
+    };
 
     dispatchFilterByKey({ key: filterKey, value: newFilter });
   };

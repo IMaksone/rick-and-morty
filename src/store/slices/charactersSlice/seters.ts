@@ -1,10 +1,10 @@
 import { SliceSeter } from "../types";
 import { CharactersState } from "src/store/types";
 import { ApiCharacter } from "src/types/character";
-import filterLocalCharactersIfNeed from "src/helper/characters/filterLocalCharactersIfNeed";
 import { Filter, FilterKey } from "src/types/filters";
-import getParamsForNewApiCharacters from "./getParamsForNewApiCharacters";
+import getNewFilteredCharacters from "./getNewFilteredCharacters";
 import mutateState from "../mutateState";
+import filterApiCharactersIfNeed from "src/helper/characters/filterApiCharactersIfNeed";
 
 type SetApiCharactersPayload = {
   nextApiCharacterEndpoint: string;
@@ -13,13 +13,13 @@ type SetApiCharactersPayload = {
 type SetApiCharacters = SliceSeter<CharactersState, SetApiCharactersPayload>;
 
 const setApiCharacters: SetApiCharacters = (state, { payload }) => {
-  const params = getParamsForNewApiCharacters(
+  const filteredCharacters = getNewFilteredCharacters(
     payload.apiCharacters,
     state.filtersData
   );
 
   const newState = {
-    ...params,
+    filteredCharacters,
     apiCharacters: payload.apiCharacters,
     nextApiCharacterEndpoint: payload.nextApiCharacterEndpoint,
   };
@@ -32,13 +32,13 @@ const setApiCharacters: SetApiCharacters = (state, { payload }) => {
 const addApiCharacters: SetApiCharacters = (state, { payload }) => {
   const newApiCharacters = [...state.apiCharacters, ...payload.apiCharacters];
 
-  const params = getParamsForNewApiCharacters(
+  const filteredCharacters = getNewFilteredCharacters(
     newApiCharacters,
     state.filtersData
   );
 
   const newState = {
-    ...params,
+    filteredCharacters,
     nextApiCharacterEndpoint: payload.nextApiCharacterEndpoint,
     apiCharacters: newApiCharacters,
   };
@@ -59,8 +59,8 @@ const setFilterByKey: SetFilterByKey = (state, { payload }) => {
     [payload.key]: payload.value,
   };
 
-  const filteredCharacters = filterLocalCharactersIfNeed(
-    state.localCharacters,
+  const filteredCharacters = filterApiCharactersIfNeed(
+    state.apiCharacters,
     newFiltersData
   );
 

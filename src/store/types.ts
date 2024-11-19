@@ -4,7 +4,6 @@ import { Filter, FilterKey, FiltersData } from "src/types/filters";
 export type CharactersState = {
   nextApiCharacterEndpoint: string;
   apiCharacters: ApiCharacter[];
-  localCharacters: LocalCharacter[];
   filteredCharacters: LocalCharacter[];
   filtersData: FiltersData;
 };

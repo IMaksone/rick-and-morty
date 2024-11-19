@@ -25,6 +25,7 @@ export default function useCharactersBox(
     virtualBoxElement,
     filteredCharacters,
     setVisibleCharacters,
+    pullCharacters,
   ]);
 
   useEffect(() => {
